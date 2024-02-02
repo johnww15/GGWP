@@ -1,7 +1,11 @@
+import Typography from "@mui/material/Typography";
+
 export default function ProfilePage() {
   return (
     <>
-      <h1>profile page is here</h1>
+      <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
+        Profile Page is running here
+      </Typography>
     </>
   );
 }

@@ -1,7 +1,11 @@
+import Typography from "@mui/material/Typography";
+
 export default function AuthPage() {
   return (
     <>
-      <h1>auth page is here</h1>
+      <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
+        Auth Page is running here
+      </Typography>
     </>
   );
 }
