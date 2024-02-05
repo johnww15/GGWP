@@ -28,7 +28,9 @@ export default function LoginForm({ setUser, user }) {
     }
 
     if (email && password) {
+      setLoginData((loginData.email = email), (loginData.password = password));
       console.log(email, password);
+      console.log("loginData", loginData);
     }
   };
 
