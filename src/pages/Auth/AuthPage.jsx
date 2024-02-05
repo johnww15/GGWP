@@ -1,11 +1,10 @@
 import Typography from "@mui/material/Typography";
+import LoginForm from "../../components/LoginForm";
 
-export default function AuthPage() {
+export default function AuthPage({ setUser, user }) {
   return (
     <>
-      <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
-        Auth Page is running here
-      </Typography>
+      <LoginForm setUser={setUser} user={user} />
     </>
   );
 }

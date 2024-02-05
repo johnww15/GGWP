@@ -29,12 +29,12 @@ function App() {
           </div>
         </>
       ) : (
-        <AuthPage setUser={setUser} />
+        <AuthPage setUser={setUser} user={user}/>
       )}
       <div>
         <Button
           variant="contained"
-          color="primary"
+          color="secondary"
           sx={{ ml: 2 }}
           onClick={handleClick}
         >
