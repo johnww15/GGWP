@@ -29,8 +29,21 @@ function checkToken(req, res) {
   res.json(req.exp);
 }
 
+//signup function
+const userSignup = async (req, res) => {
+  try {
+    // Add the user to the db
+    const user = await User.create(req.body);
+    const token = createJWT(user);
+    res.json(token);
+  } catch (err) {
+    res.status(400).json(err);
+  }
+};
+
 module.exports = {
   userLogin,
   createJWT,
   checkToken,
+  userSignup,
 };
