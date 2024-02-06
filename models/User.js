@@ -13,6 +13,11 @@ const userSchema = new Schema(
       type: String,
       required: true,
     },
+    display_name: {
+      type: String,
+      unique: true,
+      required: true,
+    },
     email: {
       type: String,
       unique: true,
@@ -27,11 +32,9 @@ const userSchema = new Schema(
       required: true,
     },
     //to be reaccessed after S3
-    profilepic: [
-      {
-        type: String,
-      },
-    ],
+    profilepic: {
+      type: String,
+    },
   },
   {
     timestamps: true,

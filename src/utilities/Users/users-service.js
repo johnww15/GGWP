@@ -31,3 +31,11 @@ export async function userLogin(email, password) {
   localStorage.setItem("token", token);
   return getUser();
 }
+
+export async function userSignup(signupData) {
+  console.log("user-service running");
+  console.log(signupData);
+  const token = await usersAPI.userSignup(signupData);
+  console.log("user-service ran");
+  localStorage.setItem("token", token);
+}

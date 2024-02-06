@@ -1,9 +1,15 @@
 const BASE_URL = "/api/users";
 import { getToken } from "./users-service";
 
+// signup function
+export async function userSignup(signupData) {
+  console.log("user-api running");
+  return sendRequest(BASE_URL + "/", "POST", signupData);
+}
+
 // login function
-export async function userLogin(credentials) {
-  return sendRequest(BASE_URL + "/login", "POST", credentials);
+export async function userLogin(loginData) {
+  return sendRequest(BASE_URL + "/login", "POST", loginData);
 }
 
 export async function sendRequest(url, method = "GET", payload = null) {
