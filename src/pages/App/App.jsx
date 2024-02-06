@@ -6,6 +6,7 @@ import Typography from "@mui/material/Typography";
 
 import ProfilePage from "../Profile/ProfilePage";
 import AuthPage from "../Auth/AuthPage";
+import SignupPage from "../Signup/SignupPage";
 
 function App() {
   const [user, setUser] = useState(false);
@@ -29,7 +30,20 @@ function App() {
           </div>
         </>
       ) : (
-        <AuthPage setUser={setUser} user={user}/>
+        <>
+          <div className="flex">
+            <Routes>
+              <Route
+                path="/"
+                element={<AuthPage setUser={setUser} user={user} />}
+              />
+              <Route
+                path="/signup"
+                element={<SignupPage setUser={setUser} user={user} />}
+              />
+            </Routes>
+          </div>
+        </>
       )}
       <div>
         <Button

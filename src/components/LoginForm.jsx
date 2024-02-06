@@ -3,7 +3,7 @@ import { TextField, Button } from "@mui/material";
 import Container from "@mui/system/Container";
 import { Link, useNavigate } from "react-router-dom";
 
-import {userLogin} from "../utilities/Users/users-service";
+import { userLogin } from "../utilities/Users/users-service";
 
 export default function LoginForm({ setUser, user }) {
   const [loginData, setLoginData] = useState({
@@ -38,10 +38,8 @@ export default function LoginForm({ setUser, user }) {
         setUser(user);
         navigate("/");
       } catch {
-    // User-error validation #1
-      setError(
-        "The email and password you specified are invalid. Please try again."
-      );
+        // User-error validation #1
+        setError("The email and password are invalid. Please try again.");
       }
     }
   };
@@ -84,7 +82,7 @@ export default function LoginForm({ setUser, user }) {
         </Button>
       </form>
       <small>
-        Need an account? <Link to="/">Register here</Link>
+        Need an account? <Link to="/signup">Register here</Link>
       </small>
     </Container>
   );
