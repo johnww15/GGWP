@@ -44,11 +44,6 @@ export default function LoginForm({ setUser }) {
     }
   };
 
-  // Might use for sign up button
-  // const handleClick = () => {
-  //     console.log("loginform handleclick running");
-  //   };
-
   return (
     <Container sx={{ width: 350 }}>
       <form autoComplete="off" onSubmit={handleSubmit}>

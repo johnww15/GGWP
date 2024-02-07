@@ -1,4 +1,5 @@
 import Typography from "@mui/material/Typography";
+import PostForm from "../../components/PostForm";
 
 export default function ProfilePage() {
   return (
@@ -6,6 +7,7 @@ export default function ProfilePage() {
       <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
         Profile Page is running here
       </Typography>
+      <PostForm />
     </>
   );
 }

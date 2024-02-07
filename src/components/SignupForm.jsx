@@ -27,8 +27,7 @@ export default function SignupForm({ setUser }) {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    // Validation logic goes here
-    // For simplicity, I'm just checking if fields are not empty
+    // Validation logic [checking if fields are not empty]
     if (!firstName.trim()) {
       setFirstNameError(true);
       return;

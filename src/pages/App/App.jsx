@@ -15,11 +15,11 @@ function App() {
     setUser(!user);
   };
 
+  // console.log(user);
   return (
     <>
-      {/* <header>{user?.name}</header> */}
       <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
-        App is running
+        App is running with id: {user?._id}
       </Typography>
       {user ? (
         <>
@@ -34,7 +34,7 @@ function App() {
           <div className="flex">
             <Routes>
               <Route
-                path="/"
+                path="/login"
                 element={<AuthPage setUser={setUser} user={user} />}
               />
               <Route
