@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { userLogin } from "../utilities/Users/users-service";
 
-export default function LoginForm({ setUser, user }) {
+export default function LoginForm({ setUser }) {
   const [loginData, setLoginData] = useState({
     email: "",
     password: "",

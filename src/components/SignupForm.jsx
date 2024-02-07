@@ -4,7 +4,7 @@ import { Link, useNavigate } from "react-router-dom";
 
 import { userSignup } from "../utilities/Users/users-service";
 
-export default function SignupForm({ setUser, user }) {
+export default function SignupForm({ setUser }) {
   const navigate = useNavigate();
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

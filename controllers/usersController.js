@@ -1,5 +1,4 @@
 const User = require("../models/User");
-const debug = require("debug")("mern:controllers:usersController");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
