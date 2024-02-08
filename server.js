@@ -9,6 +9,8 @@ const logger = require("morgan");
 
 // routers
 const usersRouter = require("./routes/usersRouter");
+const postsRouter = require("./routes/postsRouter");
+const biosRouter = require("./routes/biosRouter");
 
 //express app
 const app = express();
@@ -20,6 +22,8 @@ app.use(express.static(path.join(__dirname, "dist")));
 
 app.use(require("./config/checkToken"));
 app.use("/api/users", usersRouter);
+app.use("/api/posts", postsRouter);
+app.use("/api/bio", biosRouter);
 
 //this acts as a catch all function and must be at the very end after all other functions
 app.get("/*", function (req, res) {
