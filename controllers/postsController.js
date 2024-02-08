@@ -2,8 +2,8 @@ const Post = require("../models/Post");
 
 //function to create new post
 const postCreate = async (req, res) => {
-  const userId = "65c25ee0416220e1989c0457"; //req.user._id;
-  const data = { ...req.body, userId };
+  const userId = req.user._id;
+  const data = req.body;
   console.log("postCreate running", data, userId);
   try {
     const createdPost = await Post.create(data);

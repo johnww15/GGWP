@@ -2,7 +2,7 @@ import Typography from "@mui/material/Typography";
 import PostForm from "../../components/PostForm";
 import { Box } from "@mui/material";
 
-export default function ProfilePage() {
+export default function ProfilePage({user}) {
   return (
     <>
       <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
@@ -46,7 +46,7 @@ export default function ProfilePage() {
             margin: "1px",
           }}
         >
-          <PostForm />
+          <PostForm user={user}/>
         </Box>
       </Box>
     </>

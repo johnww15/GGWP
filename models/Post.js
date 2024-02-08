@@ -2,20 +2,17 @@ const { Schema, model } = require("mongoose");
 
 const postSchema = new Schema(
   {
-    body: {
+    content: {
       type: String,
-      required: true,
+      // required: true,
     },
     multimedia: {
       type: String,
-      required: true,
     },
-    userId: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,
