@@ -18,7 +18,7 @@ export default function RecommendationItem() {
         }}
       >
         <Typography variant="p" component="p" sx={{ margin: "1px" }}>
-          this is a feed item.
+          this is a friend recommendation item.
         </Typography>
       </Box>
     </>
