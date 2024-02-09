@@ -1,8 +1,11 @@
 import Typography from "@mui/material/Typography";
 import PostForm from "../../components/PostForm";
 import { Box } from "@mui/material";
+import FeedList from "../../components/FeedList";
+import ProfilePicture from "../../components/ProfilePicture";
+import RecommendationList from "../../components/RecommendationList";
 
-export default function ProfilePage({user}) {
+export default function ProfilePage({ user }) {
   return (
     <>
       <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
@@ -26,13 +29,14 @@ export default function ProfilePage({user}) {
             display: "flex",
             flexDirection: "column",
             alignContent: "space-around",
-            width: "30vh",
+            width: "30vw",
             height: "100vh",
             padding: "2px",
             margin: "1px",
           }}
         >
-          <p>1st box</p>
+          <ProfilePicture />
+          <RecommendationList />
         </Box>
         <Box
           sx={{
@@ -40,13 +44,14 @@ export default function ProfilePage({user}) {
             borderColor: "primary",
             display: "flex",
             flexDirection: "column",
-            width: "70vh",
+            width: "70vw",
             height: "100vh",
             padding: "2px",
             margin: "1px",
           }}
         >
-          <PostForm user={user}/>
+          <PostForm user={user} />
+          <FeedList user={user} />
         </Box>
       </Box>
     </>
