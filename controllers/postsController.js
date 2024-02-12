@@ -15,9 +15,10 @@ const postCreate = async (req, res) => {
 };
 
 //function to get all entry data
-const postIndex = async (req, res) => {
+const postIndexUserOnly = async (req, res) => {
+  const userId = req.user._id;
   try {
-    const posts = await Post.find({});
+    const posts = await Post.find({ userId: userId });
     res.json({ posts });
   } catch (error) {
     console.error("error in postIndex function in postController file", error);
@@ -27,5 +28,5 @@ const postIndex = async (req, res) => {
 
 module.exports = {
   postCreate,
-  postIndex,
+  postIndexUserOnly,
 };

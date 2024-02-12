@@ -3,7 +3,7 @@ const router = express.Router();
 const postsController = require("../controllers/postsController");
 
 router.post("/", postsController.postCreate);
-router.get("/", postsController.postIndex);
+router.get("/", postsController.postIndexUserOnly);
 // router.put("/", postsController.postUpdate);
 // router.delete("/:postId", postsController.postDeleteOne);
 

@@ -22,3 +22,19 @@ export async function createPost(body) {
     throw new Error("Network response failed.");
   }
 }
+
+export async function getFeedListByUserId(id) {
+  console.log("post-api running");
+  const options = {
+    method: "GET",
+    headers,
+  };
+
+  const res = await fetch(BASE_URL, options);
+  const json = await res.json();
+  if (res.ok) {
+    return json;
+  } else {
+    throw new Error("Network response failed.");
+  }
+}
