@@ -5,7 +5,20 @@ import FeedList from "../../components/FeedList";
 import ProfilePicture from "../../components/ProfilePicture";
 import RecommendationList from "../../components/RecommendationList";
 
+import { useState, useEffect } from "react";
+import { getFeedListByUserId } from "../../utilities/Posts/posts-service";
+
 export default function ProfilePage({ user }) {
+  const [feedList, setFeedList] = useState({ posts: [] });
+
+  useEffect(() => {
+    (async function () {
+      const response = await getFeedListByUserId();
+      setFeedList(response);
+      console.log("FeedList response", response);
+    })();
+  }, []);
+
   return (
     <>
       <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
@@ -50,8 +63,8 @@ export default function ProfilePage({ user }) {
             margin: "1px",
           }}
         >
-          <PostForm user={user} />
-          <FeedList user={user} />
+          <PostForm user={user} setFeedList={setFeedList} />
+          <FeedList user={user} setFeedList={setFeedList} feedList={feedList} />
         </Box>
       </Box>
     </>

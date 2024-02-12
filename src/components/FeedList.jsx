@@ -3,16 +3,16 @@ import FeedItem from "./FeedItem";
 import { useState, useEffect } from "react";
 import { getFeedListByUserId } from "../utilities/Posts/posts-service";
 
-export default function FeedList({ user }) {
-  const [feedList, setFeedList] = useState({ posts: [] });
+export default function FeedList({ user, setFeedList, feedList }) {
+  // const [feedList, setFeedList] = useState({ posts: [] });
 
-  useEffect(() => {
-    (async function () {
-      const response = await getFeedListByUserId();
-      setFeedList(response);
-      console.log("FeedList response", response);
-    })();
-  }, []);
+  // useEffect(() => {
+  //   (async function () {
+  //     const response = await getFeedListByUserId();
+  //     setFeedList(response);
+  //     console.log("FeedList response", response);
+  //   })();
+  // }, []);
 
   return (
     <>
