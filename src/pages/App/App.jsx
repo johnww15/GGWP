@@ -18,7 +18,7 @@ function App() {
   // console.log(user);
   return (
     <>
-      <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
+      <Typography variant="p" component="p" sx={{ mb: 2 }}>
         App is running with id: {user?._id}
       </Typography>
       {user ? (

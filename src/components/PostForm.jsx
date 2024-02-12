@@ -2,7 +2,7 @@ import { Box, TextField, Button } from "@mui/material";
 import { useState } from "react";
 import { createPost } from "../utilities/Posts/posts-service";
 
-export default function PostForm({ user }) {
+export default function PostForm({ user, setFeedList }) {
   const [postData, setPostData] = useState({
     content: "",
     multimedia: "",
@@ -16,9 +16,12 @@ export default function PostForm({ user }) {
     console.log("postform submit button clicked");
     console.log("userid", user._id);
     if (submitType === "post") {
-      console.log("content", postData);
       const response = await createPost(postData);
-      console.log(response);
+      console.log("response", response);
+      setFeedList((prevList) => ({
+        ...prevList,
+        posts: [...prevList.posts, response],
+      }));
     }
   };
 

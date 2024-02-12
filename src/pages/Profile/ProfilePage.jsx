@@ -21,9 +21,6 @@ export default function ProfilePage({ user }) {
 
   return (
     <>
-      <Typography variant="h6" component="h1" sx={{ mb: 2 }}>
-        Profile Page is running here
-      </Typography>
       <Box
         sx={{
           border: "primary",
@@ -64,7 +61,11 @@ export default function ProfilePage({ user }) {
           }}
         >
           <PostForm user={user} setFeedList={setFeedList} />
-          <FeedList user={user} setFeedList={setFeedList} feedList={feedList} />
+          <FeedList
+            user={user}
+            setFeedList={setFeedList}
+            feedList={feedList.posts}
+          />
         </Box>
       </Box>
     </>

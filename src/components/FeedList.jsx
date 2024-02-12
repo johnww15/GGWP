@@ -1,19 +1,8 @@
 import { Box } from "@mui/material";
 import FeedItem from "./FeedItem";
-import { useState, useEffect } from "react";
-import { getFeedListByUserId } from "../utilities/Posts/posts-service";
 
 export default function FeedList({ user, setFeedList, feedList }) {
-  // const [feedList, setFeedList] = useState({ posts: [] });
-
-  // useEffect(() => {
-  //   (async function () {
-  //     const response = await getFeedListByUserId();
-  //     setFeedList(response);
-  //     console.log("FeedList response", response);
-  //   })();
-  // }, []);
-
+  console.log(feedList);
   return (
     <>
       <Box
@@ -29,7 +18,7 @@ export default function FeedList({ user, setFeedList, feedList }) {
           height: "auto",
         }}
       >
-        {feedList?.posts?.map((post, idx) => (
+        {feedList?.map((post, idx) => (
           <div key={idx}>
             <FeedItem user={user} setFeedList={setFeedList} post={post} />
           </div>
