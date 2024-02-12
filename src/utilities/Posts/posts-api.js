@@ -23,7 +23,7 @@ export async function createPost(body) {
   }
 }
 
-export async function getFeedListByUserId(id) {
+export async function getFeedListByUserId() {
   console.log("post-api running");
   const options = {
     method: "GET",

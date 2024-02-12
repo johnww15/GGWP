@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 
-export default function FeedItem() {
+export default function FeedItem({ user, SetFeedList, post }) {
+  console.log("post", post);
   return (
     <>
       <Box
@@ -9,7 +10,7 @@ export default function FeedItem() {
           borderColor: "primary",
           display: "flex",
           overflow: "hidden",
-          justifyContent: "center",
+          justifyContent: "flex-start",
           alignContent: "center",
           width: "auto",
           height: "50px",
@@ -18,7 +19,7 @@ export default function FeedItem() {
         }}
       >
         <Typography variant="p" component="p" sx={{ margin: "1px" }}>
-          this is a feed item.
+          {post.content}
         </Typography>
       </Box>
     </>

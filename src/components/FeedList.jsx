@@ -4,16 +4,15 @@ import { useState, useEffect } from "react";
 import { getFeedListByUserId } from "../utilities/Posts/posts-service";
 
 export default function FeedList({ user }) {
-  const [feedList, setFeedList] = useState([]);
+  const [feedList, setFeedList] = useState({ posts: [] });
 
   useEffect(() => {
-    console.log("user", user._id);
     (async function () {
-      const response = await getFeedListByUserId(user._id);
+      const response = await getFeedListByUserId();
       setFeedList(response);
-      console.log("checking in react", response);
+      console.log("FeedList response", response);
     })();
-  }, [user]);
+  }, []);
 
   return (
     <>
@@ -30,10 +29,11 @@ export default function FeedList({ user }) {
           height: "auto",
         }}
       >
-        <p>This is the feed list</p>
-        <FeedItem user={user} />
-        <FeedItem user={user} />
-        <FeedItem user={user} />
+        {feedList?.posts?.map((post, idx) => (
+          <div key={idx}>
+            <FeedItem user={user} setFeedList={setFeedList} post={post} />
+          </div>
+        ))}
       </Box>
     </>
   );
