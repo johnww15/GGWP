@@ -14,3 +14,8 @@ export async function updateFeedItem(body) {
   const response = await PostAPI.updateFeedItem(body);
   return response;
 }
+
+export async function deletePost(postId) {
+  const response = await PostAPI.deletePost(postId);
+  return response;
+}

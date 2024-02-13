@@ -55,3 +55,19 @@ export async function updateFeedItem(body) {
     // throw new Error("Create Event Error");
   }
 }
+
+export async function deletePost(postId) {
+  const options = {
+    method: "DELETE",
+    headers,
+  };
+
+  const res = await fetch(BASE_URL + "/" + postId, options);
+  const json = await res.json();
+  if (res.ok) {
+    return json;
+  } else {
+    return res;
+    // throw new Error("Create Event Error");
+  }
+}

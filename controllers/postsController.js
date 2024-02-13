@@ -58,8 +58,31 @@ const postUpdate = async (req, res) => {
   }
 };
 
+//function to delete one post
+const postDeleteOne = async (req, res) => {
+  const userId = req.user._id;
+  const { postId } = req.params;
+  try {
+    const deletedPost = await Post.findById(postId);
+    //find if entry exists, return error 404 if entry doesn't exist
+    if (!deletedPost) {
+      return res.status(404).json({ error: "Entry not found" });
+    }
+    //check if user deleting is the owner of the favourite data, if it isn't prevent deletion
+    if (!deletedPost.userId === userId) {
+      return res.status(403).json({ error: "Unauthorised User Request" });
+    }
+    await Post.findByIdAndDelete(postId);
+    res.json(deletedPost);
+  } catch (error) {
+    console.error("error in postDelete function in postController file", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   postCreate,
   postIndexUserOnly,
   postUpdate,
+  postDeleteOne,
 };

@@ -1,11 +1,13 @@
 import { Box, Typography, Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
 import FeedUpdateDialog from "./FeedUpdateDialog";
+import FeedDeleteDialog from "./FeedDeleteDialog";
 
 export default function FeedItem({ user, setFeedList, post, feedList }) {
   const postDisplayName = post.userId.display_name;
   const content = post.content;
   const [updateOpen, setUpdateOpen] = useState(false);
+  const [deleteOpen, setDeleteOpen] = useState(false);
 
   //Reformatting date string from database for rendering
   const receivedCreateDate = post.createdAt;
@@ -28,13 +30,16 @@ export default function FeedItem({ user, setFeedList, post, feedList }) {
       setUpdateOpen(true);
     }
     if (clickType === "Delete") {
-      console.log("Delete button clicked");
+      setDeleteOpen(true);
     }
   };
 
-  const handleUpdateClose = (value) => {
+  const handleUpdateClose = () => {
     setUpdateOpen(false);
-    console.log("value", value);
+  };
+
+  const handleDeleteClose = () => {
+    setDeleteOpen(false);
   };
 
   return (
@@ -68,6 +73,14 @@ export default function FeedItem({ user, setFeedList, post, feedList }) {
           user={user}
           updateOpen={updateOpen}
           handleUpdateClose={handleUpdateClose}
+          post={post}
+          setFeedList={setFeedList}
+          feedList={feedList}
+        />
+        <FeedDeleteDialog
+          user={user}
+          deleteOpen={deleteOpen}
+          handleDeleteClose={handleDeleteClose}
           post={post}
           setFeedList={setFeedList}
           feedList={feedList}

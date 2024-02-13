@@ -42,15 +42,13 @@ export default function FeedUpdateDialog({
 
   return (
     <>
-      <Dialog onClose={handleClose} open={updateOpen}>
-        <DialogTitle>Set update form</DialogTitle>
+      <Dialog onClose={handleClose} open={updateOpen} fullWidth>
+        <DialogTitle>Edit Post</DialogTitle>
         <form autoComplete="off" onSubmit={handleSubmit}>
-          <h2>Update Form</h2>
           <TextField
             label="content"
             name="content"
             defaultValue={content}
-            // value={updatePostData.content}
             onChange={handleChange}
             required
             variant="outlined"
