@@ -11,6 +11,7 @@ const logger = require("morgan");
 const usersRouter = require("./routes/usersRouter");
 const postsRouter = require("./routes/postsRouter");
 const biosRouter = require("./routes/biosRouter");
+const friendsRouter = require("./routes/friendsRouter");
 
 //express app
 const app = express();
@@ -24,6 +25,7 @@ app.use(require("./config/checkToken"));
 app.use("/api/users", usersRouter);
 app.use("/api/posts", postsRouter);
 app.use("/api/bio", biosRouter);
+app.use("/api/friends", friendsRouter);
 
 //this acts as a catch all function and must be at the very end after all other functions
 app.get("/*", function (req, res) {
