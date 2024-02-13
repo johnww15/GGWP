@@ -47,7 +47,6 @@ export async function getRecommendationList() {
     method: "GET",
     headers,
   };
-  console.log("users-api recommendations call running", options);
   const res = await fetch(BASE_URL + "/recommendations", options);
   const json = await res.json();
   if (res.ok) {

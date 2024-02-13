@@ -10,7 +10,6 @@ import { getFeedListByUserId } from "../../utilities/Posts/posts-service";
 
 export default function ProfilePage({ user }) {
   const [feedList, setFeedList] = useState({ posts: [] });
-  console.log("ORIGINAL FEEDLIST", feedList);
 
   useEffect(() => {
     (async function () {

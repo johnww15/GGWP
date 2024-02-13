@@ -25,7 +25,6 @@ export default function FeedItem({ user, setFeedList, post, feedList }) {
   const handleClick = (clickType, evt) => {
     evt.preventDefault();
     if (clickType === "Update") {
-      console.log("update button clicked");
       setUpdateOpen(true);
     }
     if (clickType === "Delete") {

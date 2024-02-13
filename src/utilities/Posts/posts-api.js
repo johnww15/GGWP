@@ -39,7 +39,6 @@ export async function getFeedListByUserId() {
 }
 
 export async function updateFeedItem(body) {
-  console.log("post api running", body);
   const postId = body._id;
   const options = {
     method: "PUT",
