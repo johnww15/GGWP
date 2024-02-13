@@ -18,7 +18,10 @@ const postCreate = async (req, res) => {
 const postIndexUserOnly = async (req, res) => {
   const userId = req.user._id;
   try {
-    const posts = await Post.find({ userId: userId });
+    const posts = await Post.find({ userId: userId }).populate(
+      "userId",
+      "display_name"
+    );
     res.json({ posts });
   } catch (error) {
     console.error("error in postIndex function in postController file", error);
