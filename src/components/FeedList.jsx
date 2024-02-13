@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import FeedItem from "./FeedItem";
 
 export default function FeedList({ user, setFeedList, feedList }) {
-  console.log(feedList);
   return (
     <>
       <Box
