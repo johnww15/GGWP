@@ -56,11 +56,11 @@ export default function SignupForm({ setUser }) {
       password: password,
     });
     try {
-      console.log("handlesubmit running");
+      console.log("handlesubmit running", signupFormData);
       const user = await userSignup(signupFormData);
       console.log("handlesubmit ran");
       setUser(user);
-      navigate("/");
+      navigate("/login");
     } catch {
       // Error validation #1
       setError("The email or display name already in use. Please try again.");

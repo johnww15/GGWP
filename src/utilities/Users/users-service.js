@@ -35,8 +35,16 @@ export async function userLogin(email, password) {
 
 export async function userSignup(signupData) {
   console.log("user-service running");
-  console.log(signupData);
+  console.log("signupData", signupData);
   const token = await usersAPI.userSignup(signupData);
   console.log("user-service ran");
   localStorage.setItem("token", token);
+}
+
+// non-login/signup related functions below
+export async function getRecommendationList() {
+  console.log("users-service recommendation running");
+  const response = await usersAPI.getRecommendationList();
+  console.log("users-serivice recommendations ran");
+  return response;
 }

@@ -1,7 +1,20 @@
 import { Box } from "@mui/material";
 import RecommendationItem from "./RecommendationItem";
 
-export default function RecommendationList() {
+import { getRecommendationList } from "../utilities/Users/users-service";
+import { useState, useEffect } from "react";
+
+export default function RecommendationList({ user }) {
+  const [recommendationList, setRecommendationList] = useState([]);
+
+  useEffect(() => {
+    (async function () {
+      const response = await getRecommendationList();
+      setRecommendationList(response);
+      console.log("RecommendationList response", response);
+    })();
+  }, []);
+
   return (
     <>
       <Box
@@ -17,10 +30,15 @@ export default function RecommendationList() {
           height: "auto",
         }}
       >
-        <p>this is the recommmendation list</p>
-        <RecommendationItem />
-        <RecommendationItem />
-        <RecommendationItem />
+        {recommendationList?.map((recommendation, idx) => (
+          <div key={idx}>
+            <RecommendationItem
+              user={user}
+              setRecommendationList={setRecommendationList}
+              recommendation={recommendation}
+            />
+          </div>
+        ))}
       </Box>
     </>
   );

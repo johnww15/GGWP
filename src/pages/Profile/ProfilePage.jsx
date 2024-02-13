@@ -46,7 +46,7 @@ export default function ProfilePage({ user }) {
           }}
         >
           <ProfilePicture />
-          <RecommendationList />
+          <RecommendationList user={user} />
         </Box>
         <Box
           sx={{

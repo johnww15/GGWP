@@ -1,6 +1,11 @@
 import { Box, Typography } from "@mui/material";
 
-export default function RecommendationItem() {
+export default function RecommendationItem({
+  user,
+  setRecommendationList,
+  recommendation,
+}) {
+  const username = recommendation.display_name;
   return (
     <>
       <Box
@@ -18,7 +23,7 @@ export default function RecommendationItem() {
         }}
       >
         <Typography variant="p" component="p" sx={{ margin: "1px" }}>
-          this is a friend recommendation item.
+          {username}
         </Typography>
       </Box>
     </>

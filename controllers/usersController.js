@@ -40,9 +40,28 @@ const userSignup = async (req, res) => {
   }
 };
 
+//non login/signup related functions below
+async function userRecommendationList(req, res) {
+  const userId = req.user._id;
+  try {
+    const recommendationList = await User.find(
+      { _id: { $ne: userId } },
+      { password: 0 }
+    );
+    res.json(recommendationList);
+  } catch (error) {
+    console.error(
+      "error in userRecommendationList function in userController file",
+      error
+    );
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+
 module.exports = {
   userLogin,
   createJWT,
   checkToken,
   userSignup,
+  userRecommendationList,
 };

@@ -5,7 +5,7 @@ export async function createPost(body) {
   return response;
 }
 
-export async function getFeedListByUserId(id) {
-  const response = await PostAPI.getFeedListByUserId(id);
+export async function getFeedListByUserId() {
+  const response = await PostAPI.getFeedListByUserId();
   return response;
 }
