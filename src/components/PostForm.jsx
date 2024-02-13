@@ -13,8 +13,6 @@ export default function PostForm({ user, setFeedList }) {
 
   const handleSubmit = async (submitType, evt) => {
     evt.preventDefault();
-    console.log("postform submit button clicked");
-    console.log("userid", user._id);
     if (submitType === "post") {
       const response = await createPost(postData);
       console.log("response", response);

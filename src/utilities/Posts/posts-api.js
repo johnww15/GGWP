@@ -37,3 +37,22 @@ export async function getFeedListByUserId() {
     throw new Error("Network response failed.");
   }
 }
+
+export async function updateFeedItem(body) {
+  console.log("post api running", body);
+  const postId = body._id;
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(body),
+  };
+
+  const res = await fetch(BASE_URL + "/" + postId, options);
+  const json = await res.json();
+  if (res.ok) {
+    return json;
+  } else {
+    return res;
+    // throw new Error("Create Event Error");
+  }
+}

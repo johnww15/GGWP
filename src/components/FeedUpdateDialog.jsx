@@ -3,6 +3,8 @@ import Dialog from "@mui/material/Dialog";
 import { Button, TextField } from "@mui/material";
 import { useState } from "react";
 
+import { updateFeedItem } from "../utilities/Posts/posts-service";
+
 export default function FeedUpdateDialog({
   user,
   updateOpen,
@@ -18,16 +20,17 @@ export default function FeedUpdateDialog({
   };
 
   const handleChange = (evt) => {
-    console.log(updatePostData);
     setUpdatePostData({
       ...updatePostData,
       [evt.target.name]: evt.target.value,
     });
   };
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log("update submit button clicked", updatePostData);
+    console.log("submit clicked", updatePostData);
+    const response = await updateFeedItem(updatePostData);
+    console.log("feed item update", response);
   };
 
   return (
@@ -50,7 +53,7 @@ export default function FeedUpdateDialog({
             fullWidth
           />
         </form>
-        <Button variant="contained" color="primary">
+        <Button variant="contained" color="primary" onClick={handleSubmit}>
           Update
         </Button>
       </Dialog>
