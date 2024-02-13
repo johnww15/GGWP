@@ -1,4 +1,4 @@
-import { Box, Typography } from "@mui/material";
+import { Box, Typography, Button, ButtonGroup } from "@mui/material";
 
 export default function FeedItem({ user, SetFeedList, post }) {
   const postDisplayName = post.userId.display_name;
@@ -17,6 +17,17 @@ export default function FeedItem({ user, SetFeedList, post }) {
   const formattedDate = `${day} ${month} ${year}, ${hour}:${
     minute < 10 ? "0" : ""
   }${minute}`;
+
+  //handleClick function
+  const handleClick = (clickType, evt) => {
+    evt.preventDefault();
+    if (clickType === "Update") {
+      console.log("update button clicked");
+    }
+    if (clickType === "Delete") {
+      console.log("Delete button clicked");
+    }
+  };
 
   return (
     <>
@@ -37,6 +48,14 @@ export default function FeedItem({ user, SetFeedList, post }) {
         <Typography variant="p" component="p" sx={{ margin: "1px" }}>
           {postDisplayName} / {content} / {formattedDate}
         </Typography>
+        <ButtonGroup
+          variant="outlined"
+          size="small"
+          aria-label="Delete Update Group"
+        >
+          <Button onClick={(evt) => handleClick("Update", evt)}>Update</Button>
+          <Button onClick={(evt) => handleClick("Delete", evt)}>Delete</Button>
+        </ButtonGroup>
       </Box>
     </>
   );

@@ -43,11 +43,12 @@ const userSignup = async (req, res) => {
 //non login/signup related functions below
 async function userRecommendationList(req, res) {
   const userId = req.user._id;
+  const limit = 5;
   try {
     const recommendationList = await User.find(
       { _id: { $ne: userId } },
       { password: 0 }
-    );
+    ).limit(limit);
     res.json(recommendationList);
   } catch (error) {
     console.error(
