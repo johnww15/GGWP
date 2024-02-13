@@ -7,7 +7,8 @@ const postCreate = async (req, res) => {
   console.log("postCreate running", data, userId);
   try {
     const createdPost = await Post.create(data);
-    res.json(createdPost);
+    const updatedPost = await createdPost.populate("userId");
+    res.json(updatedPost);
   } catch (error) {
     console.error("error in postCreate function in postController file", error);
     res.status(500).json({ error: "Internal Server Error" });
