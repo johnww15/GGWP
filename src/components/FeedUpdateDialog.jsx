@@ -6,10 +6,11 @@ import { useState } from "react";
 import { updateFeedItem } from "../utilities/Posts/posts-service";
 
 export default function FeedUpdateDialog({
-  user,
   updateOpen,
   handleUpdateClose,
   post,
+  setFeedList,
+  feedList,
 }) {
   const content = post.content;
   const [updatePostData, setUpdatePostData] = useState(post);
@@ -28,9 +29,15 @@ export default function FeedUpdateDialog({
 
   const handleSubmit = async (evt) => {
     evt.preventDefault();
-    console.log("submit clicked", updatePostData);
     const response = await updateFeedItem(updatePostData);
-    console.log("feed item update", response);
+    const Index = feedList.findIndex((feedItem) => feedItem._id == post._id);
+
+    let newFeed = [...feedList];
+    newFeed[Index] = response;
+    let alteredFeed = { posts: newFeed };
+
+    setFeedList(alteredFeed);
+    handleClose();
   };
 
   return (

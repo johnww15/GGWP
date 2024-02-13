@@ -2,7 +2,7 @@ import { Box, Typography, Button, ButtonGroup } from "@mui/material";
 import { useState } from "react";
 import FeedUpdateDialog from "./FeedUpdateDialog";
 
-export default function FeedItem({ user, SetFeedList, post }) {
+export default function FeedItem({ user, setFeedList, post, feedList }) {
   const postDisplayName = post.userId.display_name;
   const content = post.content;
   const [updateOpen, setUpdateOpen] = useState(false);
@@ -70,6 +70,8 @@ export default function FeedItem({ user, SetFeedList, post }) {
           updateOpen={updateOpen}
           handleUpdateClose={handleUpdateClose}
           post={post}
+          setFeedList={setFeedList}
+          feedList={feedList}
         />
       </Box>
     </>

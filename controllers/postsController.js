@@ -35,10 +35,11 @@ const postUpdate = async (req, res) => {
   const userId = req.user._id;
   const { postId } = req.params;
   const data = req.body;
-  console.log("controller postid and body", postId, data);
   try {
-    const updatingPost = await Post.findById(postId);
-    console.log("updatingPost", updatingPost);
+    const updatingPost = await Post.findById(postId).populate(
+      "userId",
+      "display_name"
+    );
     //find if entry exists, return error 404 if entry doesn't exist
     if (!updatingPost) {
       return res.status(404).json({ error: "Entry not found" });
