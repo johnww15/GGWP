@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import PremiumDialog from "./PremiumDialog";
 import SettingsDialog from "./SettingsDialog";
 import BioItem from "./BioItem";
+import { getBio } from "../utilities/Bios/bios-service";
 
 export default function ProfilePicture({ user, setUser }) {
   const [premiumOpen, setPremiumOpen] = useState(false);

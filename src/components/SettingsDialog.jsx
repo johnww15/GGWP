@@ -3,7 +3,6 @@ import { useState } from "react";
 import { updateBio } from "../utilities/Bios/bios-service";
 
 export default function SettingsDialog({
-  user,
   settingsOpen,
   handleSettingsClose,
   bio,
