@@ -82,7 +82,6 @@ export default function ProfilePicture({ user, setUser }) {
           user={user}
           settingsOpen={settingsOpen}
           handleSettingsClose={handleSettingsClose}
-          bio={bio}
           setBio={setBio}
           bioData={bioData}
           setBioData={setBioData}

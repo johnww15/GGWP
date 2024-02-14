@@ -5,7 +5,6 @@ import { updateBio } from "../utilities/Bios/bios-service";
 export default function SettingsDialog({
   settingsOpen,
   handleSettingsClose,
-  bio,
   setBio,
   bioData,
   setBioData,
