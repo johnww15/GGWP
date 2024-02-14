@@ -3,11 +3,15 @@ const Friend = require("../models/Friends");
 //function to create new post
 const friendCreate = async (req, res) => {
   const userId = req.user._id;
-  const data = { ...req.body, userId };
+  const data = req.body;
   console.log("friendCreate running", data, userId);
   try {
-    const createdFriend = await Friend.create(data);
-    res.json({ createdFriend });
+    const checkUserExist = await Friend.find({ userId: data.userId });
+    console.log("checkuser", checkUserExist, !checkUserExist);
+    if (checkUserExist.length === 0) {
+      const createdFriend = await Friend.create(data);
+      res.json(createdFriend);
+    }
   } catch (error) {
     console.error(
       "error in friendCreate function in friendController file",

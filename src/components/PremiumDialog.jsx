@@ -1,6 +1,6 @@
 import { Box, Button, Dialog, DialogTitle, Typography } from "@mui/material";
-import { useState } from "react";
 import { premiumSwitch } from "../utilities/Users/users-service";
+import { createFriendList } from "../utilities/Friends/friends-service";
 
 export default function PremiumDialog({
   user,
@@ -19,6 +19,12 @@ export default function PremiumDialog({
       handlePremiumClose();
     }
     const response = await premiumSwitch(submitType);
+
+    if (response.isPremium === true) {
+      console.log("isPremium", response.isPremium);
+      const friendsResponse = await createFriendList(response);
+      console.log("friendsResponse", friendsResponse);
+    }
     setUser(response);
     handlePremiumClose();
   };

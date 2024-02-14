@@ -35,6 +35,14 @@ export default function ProfilePicture({ user, setUser }) {
         >
           Premium
         </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          sx={{ m: 1 }}
+          onClick={(evt) => handlePremiumClick(evt)}
+        >
+          Settings
+        </Button>
         <PremiumDialog
           user={user}
           premiumOpen={premiumOpen}
