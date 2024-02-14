@@ -38,7 +38,6 @@ export default function ProfilePicture({ user, setUser }) {
       const response = await getBio();
       setBio(response);
       setBioData(response);
-      console.log("getBio response", response);
     })();
   }, []);
 
