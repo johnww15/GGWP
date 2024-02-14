@@ -1,4 +1,3 @@
-import Typography from "@mui/material/Typography";
 import PostForm from "../../components/PostForm";
 import { Box } from "@mui/material";
 import FeedList from "../../components/FeedList";
