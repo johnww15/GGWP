@@ -17,13 +17,13 @@ export default function SignupForm({ setUser }) {
   const [emailError, setEmailError] = useState(false);
   const [passwordError, setPasswordError] = useState(false);
   const [error, setError] = useState(false);
-  const [signupFormData, setSignupFormData] = useState({
-    first_name: "",
-    last_name: "",
-    display_name: "",
-    email: "",
-    password: "",
-  });
+  // const [signupFormData, setSignupFormData] = useState({
+  //   first_name: "",
+  //   last_name: "",
+  //   display_name: "",
+  //   email: "",
+  //   password: "",
+  // });
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -48,17 +48,16 @@ export default function SignupForm({ setUser }) {
       setPasswordError(true);
       return;
     }
-    setSignupFormData({
+    const FormData = {
       first_name: firstName,
       last_name: lastName,
       display_name: displayName,
       email: email,
       password: password,
-    });
+    };
+
     try {
-      console.log("handlesubmit running", signupFormData);
-      const user = await userSignup(signupFormData);
-      console.log("handlesubmit ran");
+      const user = await userSignup(FormData);
       setUser(user);
       navigate("/login");
     } catch {
