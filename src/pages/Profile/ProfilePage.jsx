@@ -7,7 +7,7 @@ import RecommendationList from "../../components/RecommendationList";
 import { useState, useEffect } from "react";
 import { getFeedListByUserId } from "../../utilities/Posts/posts-service";
 
-export default function ProfilePage({ user }) {
+export default function ProfilePage({ user, setUser }) {
   const [feedList, setFeedList] = useState({ posts: [] });
 
   useEffect(() => {
@@ -37,14 +37,16 @@ export default function ProfilePage({ user }) {
             borderColor: "primary",
             display: "flex",
             flexDirection: "column",
-            alignContent: "space-around",
+            flexWrap: "wrap",
+            alignItems: "center",
+            justifyContent: "flex-start",
             width: "30vw",
             height: "100vh",
             padding: "2px",
             margin: "1px",
           }}
         >
-          <ProfilePicture />
+          <ProfilePicture user={user} setUser={setUser} />
           <RecommendationList user={user} />
         </Box>
         <Box

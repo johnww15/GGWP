@@ -42,7 +42,14 @@ export async function userSignup(signupData) {
 }
 
 // non-login/signup related functions below
+//function to retrieve user's recommendations
 export async function getRecommendationList() {
   const response = await usersAPI.getRecommendationList();
+  return response;
+}
+
+//premium switch function
+export async function premiumSwitch(data) {
+  const response = await usersAPI.premiumSwitch(data);
   return response;
 }

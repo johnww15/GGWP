@@ -42,12 +42,32 @@ export async function sendRequest(url, method = "GET", payload = null) {
 }
 
 //non login/signup related functions below
+//function to retrieve user's recommendations
 export async function getRecommendationList() {
   const options = {
     method: "GET",
     headers,
   };
   const res = await fetch(BASE_URL + "/recommendations", options);
+  const json = await res.json();
+  if (res.ok) {
+    return json;
+  } else {
+    throw new Error("Network response failed.");
+  }
+}
+
+//premium toggling function
+export async function premiumSwitch(data) {
+  const newData = {
+    isPremium: data,
+  };
+  const options = {
+    method: "PUT",
+    headers,
+    body: JSON.stringify(newData),
+  };
+  const res = await fetch(BASE_URL, options);
   const json = await res.json();
   if (res.ok) {
     return json;

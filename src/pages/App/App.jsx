@@ -25,7 +25,10 @@ function App() {
         <>
           <div className="flex">
             <Routes>
-              <Route path="/" element={<ProfilePage user={user} />} />
+              <Route
+                path="/"
+                element={<ProfilePage user={user} setUser={setUser} />}
+              />
             </Routes>
           </div>
         </>

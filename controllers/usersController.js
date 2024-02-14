@@ -59,10 +59,38 @@ async function userRecommendationList(req, res) {
   }
 }
 
+//premium switch function
+async function userPremiumSwitch(req, res) {
+  const userId = req.user._id;
+  const data = req.body;
+  try {
+    const updatingUser = await User.findById(userId);
+    //find if entry exists, return error 404 if entry doesn't exist
+    if (!updatingUser) {
+      return res.status(404).json({ error: "Entry not found" });
+    }
+    // check if user updating is the owner of the entry, if it isn't prevent action
+    if (!updatingUser.userId === userId) {
+      return res.status(403).json({ error: "Unauthorised User Request" });
+    }
+    updatingUser.isPremium = data.isPremium;
+    const updatedUser = await updatingUser.save();
+
+    res.json(updatedUser);
+  } catch (error) {
+    console.error(
+      "error in userPremiumSwtich function in usersController file",
+      error
+    );
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+}
+
 module.exports = {
   userLogin,
   createJWT,
   checkToken,
   userSignup,
   userRecommendationList,
+  userPremiumSwitch,
 };

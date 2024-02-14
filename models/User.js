@@ -34,6 +34,11 @@ const userSchema = new Schema(
     //to be reaccessed after S3
     profilepic: {
       type: String,
+      default: "https://images.unsplash.com/photo-1517849845537-4d257902454a",
+    },
+    isPremium: {
+      type: Boolean,
+      default: false,
     },
   },
   {
