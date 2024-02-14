@@ -1,9 +1,17 @@
 import { Box, Button } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PremiumDialog from "./PremiumDialog";
+import SettingsDialog from "./SettingsDialog";
+import BioItem from "./BioItem";
 
 export default function ProfilePicture({ user, setUser }) {
   const [premiumOpen, setPremiumOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [bio, setBio] = useState({
+    type: "undisclosed",
+    genre: "undisclosed",
+    body: "yet to be updated",
+  });
 
   const handlePremiumClick = (evt) => {
     evt.preventDefault();
@@ -13,6 +21,23 @@ export default function ProfilePicture({ user, setUser }) {
   const handlePremiumClose = () => {
     setPremiumOpen(false);
   };
+
+  const handleSettingsClick = (evt) => {
+    evt.preventDefault();
+    setSettingsOpen(true);
+  };
+
+  const handleSettingsClose = () => {
+    setSettingsOpen(false);
+  };
+
+  // useEffect(() => {
+  //   (async function () {
+  //     const response = await getBio();
+  //     setBio(response);
+  //     console.log("getBio response", response);
+  //   })();
+  // }, []);
 
   return (
     <>
@@ -39,15 +64,23 @@ export default function ProfilePicture({ user, setUser }) {
           variant="outlined"
           color="primary"
           sx={{ m: 1 }}
-          onClick={(evt) => handlePremiumClick(evt)}
+          onClick={(evt) => handleSettingsClick(evt)}
         >
           Settings
         </Button>
+        <BioItem user={user} bio={bio} />
         <PremiumDialog
           user={user}
           premiumOpen={premiumOpen}
           handlePremiumClose={handlePremiumClose}
           setUser={setUser}
+        />
+        <SettingsDialog
+          user={user}
+          settingsOpen={settingsOpen}
+          handleSettingsClose={handleSettingsClose}
+          bio={bio}
+          setBio={setBio}
         />
       </Box>
     </>

@@ -24,7 +24,7 @@ app.use(express.static(path.join(__dirname, "dist")));
 app.use(require("./config/checkToken"));
 app.use("/api/users", usersRouter);
 app.use("/api/posts", postsRouter);
-app.use("/api/bio", biosRouter);
+app.use("/api/bios", biosRouter);
 app.use("/api/friends", friendsRouter);
 
 //this acts as a catch all function and must be at the very end after all other functions
