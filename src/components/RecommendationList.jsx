@@ -1,23 +1,12 @@
 import { Box } from "@mui/material";
 import RecommendationItem from "./RecommendationItem";
 
-import { getRecommendationList } from "../utilities/Users/users-service";
-import { useState, useEffect } from "react";
-import { getFriendsList } from "../utilities/Friends/friends-service";
-
-export default function RecommendationList({ user }) {
-  const [recommendationList, setRecommendationList] = useState([]);
-
-  useEffect(() => {
-    (async function () {
-      const friendListResponse = await getFriendsList();
-      console.log("friendListResponse", friendListResponse);
-      const response = await getRecommendationList(friendListResponse);
-      setRecommendationList(response);
-      console.log("RecommendationList response", response);
-    })();
-  }, []);
-
+export default function RecommendationList({
+  user,
+  friendsList,
+  recommendationList,
+  setRecommendationList,
+}) {
   return (
     <>
       <Box

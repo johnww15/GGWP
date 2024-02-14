@@ -6,15 +6,26 @@ import RecommendationList from "../../components/RecommendationList";
 
 import { useState, useEffect } from "react";
 import { getFeedListByUserId } from "../../utilities/Posts/posts-service";
+import { getFriendsList } from "../../utilities/Friends/friends-service";
+import { getRecommendationList } from "../../utilities/Users/users-service";
 
 export default function ProfilePage({ user, setUser }) {
   const [feedList, setFeedList] = useState({ posts: [] });
+  const [friendsList, setFriendsList] = useState([]);
+  const [recommendationList, setRecommendationList] = useState([]);
 
   useEffect(() => {
     (async function () {
-      const response = await getFeedListByUserId();
-      setFeedList(response);
-      console.log("FeedList response", response);
+      const feedListResponse = await getFeedListByUserId();
+      const friendsListResponse = await getFriendsList();
+      const recommendationListResponse = await getRecommendationList(
+        friendsListResponse
+      );
+      setRecommendationList(recommendationListResponse);
+      console.log("RecommendationList response", recommendationListResponse);
+      console.log("friendListResponse", friendsListResponse);
+      console.log("FeedList response", feedListResponse);
+      setFeedList(feedListResponse);
     })();
   }, []);
 
@@ -47,7 +58,12 @@ export default function ProfilePage({ user, setUser }) {
           }}
         >
           <ProfilePicture user={user} setUser={setUser} />
-          <RecommendationList user={user} />
+          <RecommendationList
+            user={user}
+            friendsList={friendsList}
+            recommendationList={recommendationList}
+            setRecommendationList
+          />
         </Box>
         <Box
           sx={{

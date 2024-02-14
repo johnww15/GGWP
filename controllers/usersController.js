@@ -46,7 +46,7 @@ async function userRecommendationList(req, res) {
   const data = req.body;
   const friends = data.friends;
   const limit = 5;
-  console.log("friends", friends);
+  // console.log("friends", friends);
   try {
     const recommendationList = await User.find(
       { _id: { $ne: userId, $nin: friends } },
