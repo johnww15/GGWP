@@ -22,7 +22,7 @@ export default function FeedDeleteDialog({
       return item._id !== response._id;
     });
     let alteredFeed = { posts: newFeed };
-    
+
     setFeedList(alteredFeed);
   };
 
@@ -44,7 +44,7 @@ export default function FeedDeleteDialog({
         >
           <Button
             variant="contained"
-            color="primary"
+            color="error"
             sx={{ m: 1, width: "20%" }}
             onClick={handleDelete}
           >
