@@ -3,7 +3,7 @@ const router = express.Router();
 const friendsController = require("../controllers/friendsController");
 
 router.post("/", friendsController.friendCreate);
-// router.get("/", biosController.bioIndex);
-// router.put("/", biosController.bioUpdate);
+router.put("/", friendsController.friendAdd);
+router.get("/", friendsController.friendIndex);
 
 module.exports = router;

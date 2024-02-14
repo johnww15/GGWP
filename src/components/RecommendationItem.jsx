@@ -1,5 +1,6 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import AddCircleSharpIcon from "@mui/icons-material/AddCircleSharp";
+import { addFriend } from "../utilities/Friends/friends-service";
 
 export default function RecommendationItem({
   user,
@@ -7,6 +8,14 @@ export default function RecommendationItem({
   recommendation,
 }) {
   const username = recommendation.display_name;
+  console.log(recommendation);
+
+  const handleClick = async (evt) => {
+    evt.preventDefault();
+    console.log("recommendation afterclick", recommendation);
+    const response = await addFriend(recommendation);
+    console.log("response.friends is array", response.friends);
+  };
   return (
     <>
       <Box
@@ -26,7 +35,12 @@ export default function RecommendationItem({
         <Typography variant="p" component="p" sx={{ margin: "1px" }}>
           {username}
         </Typography>
-        <IconButton variant="outlined" color="primary" size="small">
+        <IconButton
+          variant="outlined"
+          color="primary"
+          size="small"
+          onClick={handleClick}
+        >
           <AddCircleSharpIcon />
         </IconButton>
       </Box>
