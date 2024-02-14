@@ -6,7 +6,7 @@ const bioIndex = async (req, res) => {
   try {
     const bio = await Bio.findOne({ userId: userId });
     console.log("bio", bio);
-    res.json({ bio });
+    res.json(bio);
   } catch (error) {
     console.error("error in bioIndex function in bioController file", error);
     res.status(500).json({ error: "Internal Server Error" });

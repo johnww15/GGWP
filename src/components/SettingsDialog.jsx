@@ -7,12 +7,13 @@ export default function SettingsDialog({
   handleSettingsClose,
   bio,
   setBio,
+  bioData,
+  setBioData,
 }) {
-  const [bioData, setBioData] = useState(bio);
   const [typeValue, setTypeValue] = useState("");
   const [genreValue, setGenreValue] = useState("");
   const [bodyValue, setBodyValue] = useState("");
-
+  console.log("biodata on load", bioData);
   const handleClose = () => {
     handleSettingsClose();
   };

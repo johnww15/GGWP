@@ -13,6 +13,7 @@ export default function ProfilePicture({ user, setUser }) {
     genre: "undisclosed",
     body: "yet to be updated",
   });
+  const [bioData, setBioData] = useState(bio);
 
   const handlePremiumClick = (evt) => {
     evt.preventDefault();
@@ -32,13 +33,14 @@ export default function ProfilePicture({ user, setUser }) {
     setSettingsOpen(false);
   };
 
-  // useEffect(() => {
-  //   (async function () {
-  //     const response = await getBio();
-  //     setBio(response);
-  //     console.log("getBio response", response);
-  //   })();
-  // }, []);
+  useEffect(() => {
+    (async function () {
+      const response = await getBio();
+      setBio(response);
+      setBioData(response);
+      console.log("getBio response", response);
+    })();
+  }, []);
 
   return (
     <>
@@ -82,6 +84,8 @@ export default function ProfilePicture({ user, setUser }) {
           handleSettingsClose={handleSettingsClose}
           bio={bio}
           setBio={setBio}
+          bioData={bioData}
+          setBioData={setBioData}
         />
       </Box>
     </>
