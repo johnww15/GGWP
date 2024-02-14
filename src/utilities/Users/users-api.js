@@ -43,10 +43,14 @@ export async function sendRequest(url, method = "GET", payload = null) {
 
 //non login/signup related functions below
 //function to retrieve user's recommendations
-export async function getRecommendationList() {
+export async function getRecommendationList(array) {
+  const data = {
+    friends: array,
+  };
   const options = {
-    method: "GET",
+    method: "POST",
     headers,
+    body: JSON.stringify(data),
   };
   const res = await fetch(BASE_URL + "/recommendations", options);
   const json = await res.json();

@@ -43,8 +43,8 @@ export async function userSignup(signupData) {
 
 // non-login/signup related functions below
 //function to retrieve user's recommendations
-export async function getRecommendationList() {
-  const response = await usersAPI.getRecommendationList();
+export async function getRecommendationList(array) {
+  const response = await usersAPI.getRecommendationList(array);
   return response;
 }
 

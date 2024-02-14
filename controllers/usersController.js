@@ -43,10 +43,13 @@ const userSignup = async (req, res) => {
 //non login/signup related functions below
 async function userRecommendationList(req, res) {
   const userId = req.user._id;
+  const data = req.body;
+  const friends = data.friends;
   const limit = 5;
+  console.log("friends", friends);
   try {
     const recommendationList = await User.find(
-      { _id: { $ne: userId } },
+      { _id: { $ne: userId, $nin: friends } },
       { password: 0 }
     ).limit(limit);
     res.json(recommendationList);

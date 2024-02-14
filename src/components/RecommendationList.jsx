@@ -12,7 +12,7 @@ export default function RecommendationList({ user }) {
     (async function () {
       const friendListResponse = await getFriendsList();
       console.log("friendListResponse", friendListResponse);
-      const response = await getRecommendationList();
+      const response = await getRecommendationList(friendListResponse);
       setRecommendationList(response);
       console.log("RecommendationList response", response);
     })();
