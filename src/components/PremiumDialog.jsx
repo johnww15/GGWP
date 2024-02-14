@@ -4,6 +4,7 @@ import { premiumSwitch } from "../utilities/Users/users-service";
 
 export default function PremiumDialog({
   user,
+  setUser,
   premiumOpen,
   handlePremiumClose,
 }) {
@@ -18,7 +19,8 @@ export default function PremiumDialog({
       handlePremiumClose();
     }
     const response = await premiumSwitch(submitType);
-    console.log("premium toggle ran", response);
+    setUser(response);
+    handlePremiumClose();
   };
 
   return (
@@ -37,7 +39,7 @@ export default function PremiumDialog({
         >
           <Button
             variant="contained"
-            color="primary"
+            color={user.isPremium ? "primary" : "secondary"}
             sx={{ m: 1, width: "20%" }}
             onClick={(evt) => handlePremiumClick(true, evt)}
           >
@@ -45,7 +47,7 @@ export default function PremiumDialog({
           </Button>
           <Button
             variant="contained"
-            color="secondary"
+            color={user.isPremium ? "secondary" : "primary"}
             sx={{ m: 1, width: "20%" }}
             onClick={(evt) => handlePremiumClick(false, evt)}
           >
