@@ -8,7 +8,7 @@ export default function PostForm({ user, setFeedList }) {
     multimedia: "",
     userId: user._id,
   });
-  const [multimedia, setMultimedia] = useState("");
+  // const [multimedia, setMultimedia] = useState("");
   const [inputValue, setInputValue] = useState("");
 
   const handleSubmit = async (submitType, evt) => {
@@ -53,14 +53,14 @@ export default function PostForm({ user, setFeedList }) {
             inputProps={{ maxLength: 300 }}
             value={postData.content}
           />
-          <Button
+          {/* <Button
             variant="outlined"
             color="primary"
             type=""
             sx={{ marginRight: "5px" }}
           >
             Add Multimedia
-          </Button>
+          </Button> */}
           <Button
             variant="outlined"
             color="primary"

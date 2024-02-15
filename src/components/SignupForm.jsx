@@ -58,8 +58,9 @@ export default function SignupForm({ setUser }) {
 
     try {
       const user = await userSignup(FormData);
+      console.log("newuser signup", user);
       setUser(user);
-      navigate("/login");
+      navigate("/");
     } catch {
       // Error validation #1
       setError("The email or display name already in use. Please try again.");

@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 
-import Button from "@mui/material/Button";
+// import Button from "@mui/material/Button";
 import Typography from "@mui/material/Typography";
 
 import ProfilePage from "../Profile/ProfilePage";
@@ -12,16 +12,16 @@ import { getUser } from "../../utilities/Users/users-service";
 function App() {
   const [user, setUser] = useState(getUser());
 
-  const handleClick = () => {
-    setUser(!user);
-  };
+  // const handleClick = () => {
+  //   setUser(!user);
+  // };
 
   // console.log(user);
   return (
     <>
-      {/* <Typography variant="p" component="p" sx={{ mb: 2 }}>
+      <Typography variant="p" component="p" sx={{ mb: 2 }}>
         App is running with id: {user?.email} / {user?._id}
-      </Typography> */}
+      </Typography>
       {user ? (
         <>
           <div className="flex">

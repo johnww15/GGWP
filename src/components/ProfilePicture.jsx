@@ -54,8 +54,21 @@ export default function ProfilePicture({
   useEffect(() => {
     (async function () {
       const response = await getBio();
-      setBio(response);
-      setBioData(response);
+      if (response) {
+        setBio(response);
+        setBioData(response);
+      } else {
+        setBio({
+          type: "undisclosed",
+          genre: "undisclosed",
+          body: "yet to be updated",
+        });
+        setBioData({
+          type: "undisclosed",
+          genre: "undisclosed",
+          body: "yet to be updated",
+        });
+      }
     })();
   }, [user]);
 
@@ -119,6 +132,7 @@ export default function ProfilePicture({
           handleSettingsClose={handleSettingsClose}
           setBio={setBio}
           bioData={bioData}
+          bio={bio}
           setBioData={setBioData}
         />
         <FriendsDialog

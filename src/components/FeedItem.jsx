@@ -41,9 +41,6 @@ export default function FeedItem({ user, setFeedList, post, feedList }) {
   const handleDeleteClose = () => {
     setDeleteOpen(false);
   };
-  console.log("post item", post);
-  console.log("ids", post._id, user._id);
-  console.log("true check", post._id === user._id);
   return (
     <>
       <Box

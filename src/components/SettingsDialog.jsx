@@ -6,6 +6,7 @@ export default function SettingsDialog({
   settingsOpen,
   handleSettingsClose,
   setBio,
+  bio,
   bioData,
   setBioData,
 }) {
@@ -59,62 +60,61 @@ export default function SettingsDialog({
 
   return (
     <>
-      <Dialog onClose={handleClose} open={settingsOpen} fullWidth>
-        <DialogTitle>Edit Post</DialogTitle>
-        <form autoComplete="off" onSubmit={handleSubmit}>
-          <TextField
-            label="type"
-            name="type"
-            defaultValue={bioData.type}
-            onChange={(evt) => handleChange("type", evt)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="type"
-            sx={{ mb: 3 }}
-            fullWidth
-            helperText={`${typeValue.length}/50`}
-            inputProps={{ maxLength: 50 }}
-          />
-          <TextField
-            label="genre"
-            name="genre"
-            defaultValue={bioData.genre}
-            onChange={(evt) => handleChange("genre", evt)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="genre"
-            sx={{ mb: 3 }}
-            fullWidth
-            helperText={`${genreValue.length}/50`}
-            inputProps={{ maxLength: 50 }}
-          />
-          <TextField
-            label="about"
-            name="body"
-            defaultValue={bioData.body}
-            onChange={(evt) => handleChange("body", evt)}
-            required
-            variant="outlined"
-            color="secondary"
-            type="body"
-            sx={{ mb: 3 }}
-            fullWidth
-            multiline
-            maxRows={3}
-            helperText={`${bodyValue.length}/150`}
-            inputProps={{ maxLength: 150 }}
-          />
-        </form>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={(evt) => handleSubmit(evt)}
-        >
-          Edit
-        </Button>
-      </Dialog>
+      {bio && (
+        <Dialog onClose={handleClose} open={settingsOpen} fullWidth>
+          <DialogTitle>Edit Post</DialogTitle>
+          <form autoComplete="off" onSubmit={handleSubmit}>
+            <TextField
+              label="type"
+              name="type"
+              defaultValue={bioData.type || "undiscloed"}
+              onChange={(evt) => handleChange("type", evt)}
+              variant="outlined"
+              color="secondary"
+              type="type"
+              sx={{ mb: 3 }}
+              fullWidth
+              helperText={`${typeValue.length}/50`}
+              inputProps={{ maxLength: 50 }}
+            />
+            <TextField
+              label="genre"
+              name="genre"
+              defaultValue={bioData.genre || "undiscloed"}
+              onChange={(evt) => handleChange("genre", evt)}
+              variant="outlined"
+              color="secondary"
+              type="genre"
+              sx={{ mb: 3 }}
+              fullWidth
+              helperText={`${genreValue.length}/50`}
+              inputProps={{ maxLength: 50 }}
+            />
+            <TextField
+              label="about"
+              name="body"
+              defaultValue={bioData.body || "undiscloed"}
+              onChange={(evt) => handleChange("body", evt)}
+              variant="outlined"
+              color="secondary"
+              type="body"
+              sx={{ mb: 3 }}
+              fullWidth
+              multiline
+              maxRows={3}
+              helperText={`${bodyValue.length}/150`}
+              inputProps={{ maxLength: 150 }}
+            />
+          </form>
+          <Button
+            variant="contained"
+            color="primary"
+            onClick={(evt) => handleSubmit(evt)}
+          >
+            Edit
+          </Button>
+        </Dialog>
+      )}
     </>
   );
 }
