@@ -24,6 +24,7 @@ export default function PremiumDialog({
       const friendsResponse = await createFriendList(response);
       console.log("friendsResponse", friendsResponse);
     }
+    console.log("response", response);
     setUser(response);
     handleClose();
     return;
@@ -33,9 +34,25 @@ export default function PremiumDialog({
     <>
       <Dialog onClose={handleClose} open={premiumOpen} fullWidth>
         <DialogTitle align="center">Want to be a premium member?</DialogTitle>
-        <Typography variant="p" component="p" align="center">
-          Why not?
-        </Typography>
+        {user?.isPremium ? (
+          <>
+            <Typography variant="p" component="p" align="center">
+              Currently you{" "}
+              <b>
+                <u>ARE</u>
+              </b>{" "}
+              a premium user
+            </Typography>
+          </>
+        ) : (
+          <Typography variant="p" component="p" align="center">
+            Currently you{" "}
+            <b>
+              <u>ARE NOT</u>
+            </b>{" "}
+            a premium user
+          </Typography>
+        )}
         <Box
           sx={{
             display: "flex",

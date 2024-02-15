@@ -2,7 +2,6 @@ import { Box, Typography } from "@mui/material";
 import RecommendationItem from "./RecommendationItem";
 
 export default function RecommendationList({
-  user,
   recommendationList,
   setRecommendationList,
   setFeedList,
@@ -11,8 +10,6 @@ export default function RecommendationList({
     <>
       <Box
         sx={{
-          border: "2px solid",
-          borderColor: "primary",
           display: "flex",
           flexDirection: "column",
           overflow: "hidden",
@@ -22,8 +19,13 @@ export default function RecommendationList({
           height: "auto",
         }}
       >
-        <Typography variant="p" component="p" sx={{ align: "center" }}>
-          Reommended Friends
+        <Typography
+          variant="h5"
+          component="h6"
+          align="center"
+          sx={{ align: "center", fontWeight: "bold" }}
+        >
+          Recommended Users
         </Typography>
         {recommendationList?.map((recommendation, idx) => (
           <div key={idx}>

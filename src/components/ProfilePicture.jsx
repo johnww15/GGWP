@@ -82,20 +82,37 @@ export default function ProfilePicture({
           overflow: "hidden",
           justifyContent: "center",
           width: "50%",
+          margin: "30px",
         }}
       >
-        <img src={`${user.profilepic}`} alt="profile" />
+        <img
+          src={`${user.profilepic}`}
+          alt="profile"
+          height="150px"
+          border="10px solid #FEDE00"
+        />
+        <Typography
+          variable="h1"
+          component="h1"
+          align="center"
+          fontWeight="bold"
+          fontStyle="italic"
+        >
+          {`@${user.display_name}`}
+        </Typography>
         <Button
-          variant="outlined"
+          variant="contained"
           color="primary"
+          size="small"
           sx={{ m: 1 }}
           onClick={(evt) => handlePremiumClick(evt)}
         >
           Premium
         </Button>
         <Button
-          variant="outlined"
+          variant="contained"
           color="primary"
+          size="small"
           sx={{ m: 1 }}
           onClick={(evt) => handleSettingsClick(evt)}
         >
@@ -104,8 +121,9 @@ export default function ProfilePicture({
         {user?.isPremium ? (
           <>
             <Button
-              variant="outlined"
+              variant="contained"
               color="primary"
+              size="small"
               sx={{ m: 1 }}
               onClick={(evt) => handleFriendsClick(evt)}
             >
@@ -114,7 +132,12 @@ export default function ProfilePicture({
           </>
         ) : (
           <>
-            <Button variant="outlined" color="primary" dx={{ m: 1 }}>
+            <Button
+              variant="contained"
+              color="error"
+              size="small"
+              sx={{ m: 1 }}
+            >
               No premium, No Friends
             </Button>
           </>

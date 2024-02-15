@@ -13,6 +13,18 @@ const theme = createTheme({
     error: {
       main: red.A400,
     },
+    background: {
+      main: "#FFFFFF",
+    },
+    ascents: {
+      light: "#FFCAB1",
+      medium: "#210124",
+      gray: "#7B7263",
+    },
+    text: {
+      primary: "#0F4C75",
+      secondary: "#BBE1FA",
+    },
   },
 });
 

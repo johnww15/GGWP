@@ -45,7 +45,16 @@ export default function PostForm({ user, setFeedList }) {
             variant="outlined"
             color="secondary"
             type="content"
-            sx={{ mb: 1 }}
+            InputLabelProps={{ style: { color: "#8B687F" } }}
+            FormHelperTextProps={{ style: { color: "#7B7263" } }}
+            InputProps={{ style: { color: "#BBE1FA" } }}
+            sx={{
+              mb: 1,
+              mt: 5,
+              "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
+                borderColor: "#BBE1FA",
+              },
+            }}
             multiline
             fullWidth
             maxRows={3}
@@ -62,9 +71,10 @@ export default function PostForm({ user, setFeedList }) {
             Add Multimedia
           </Button> */}
           <Button
-            variant="outlined"
-            color="primary"
+            variant="contained"
+            color="secondary"
             type="submit"
+            sx={{ mb: 5 }}
             onClick={(evt) => handleSubmit("post", evt)}
           >
             Post it

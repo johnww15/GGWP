@@ -33,23 +33,28 @@ export default function FriendItem({
     <>
       <Box
         sx={{
-          border: "2px solid",
+          border: "1px solid",
           borderColor: "primary",
           display: "flex",
           flexDirection: "row",
-          overflow: "hidden",
-          justifyContent: "center",
-          alignContent: "center",
-          width: "100x",
+          justifyContent: "space-between",
+          alignItems: "center",
+          width: "300px",
           height: "100px",
-          padding: "2px",
-          margin: "2px",
+          padding: "5px",
+          margin: "5px",
         }}
       >
-        <Typography variant="p" component="p" sx={{ margin: "1px" }}>
-          <Avatar src={`${friend.profilepic}`} alt={`${friend.display_name}`} />
-          {friend.display_name}
-        </Typography>
+        <Box sx={{ display: "flex", alignItems: "center" }}>
+          <Avatar src={friend.profilepic} alt={friend.display_name} />
+          <Typography
+            variant="body1"
+            sx={{ marginLeft: "13px", fontWeight: "bold" }}
+          >
+            @{friend.display_name}
+          </Typography>
+        </Box>
+
         <IconButton
           variant="outlined"
           color="primary"

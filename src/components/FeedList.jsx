@@ -6,13 +6,9 @@ export default function FeedList({ user, setFeedList, feedList }) {
     <>
       <Box
         sx={{
-          border: "2px solid",
-          borderColor: "primary",
           display: "flex",
           flexDirection: "column",
-          overflow: "hidden",
-          alignContent: "space-around",
-          justifyContent: "center",
+          overflow: "auto",
           width: "70vw",
           height: "auto",
         }}

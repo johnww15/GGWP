@@ -76,6 +76,8 @@ export default function SettingsDialog({
               fullWidth
               helperText={`${typeValue.length}/50`}
               inputProps={{ maxLength: 50 }}
+              InputLabelProps={{ style: { color: "#8B687F" } }}
+              FormHelperTextProps={{ style: { color: "#7B7263" } }}
             />
             <TextField
               label="genre"
@@ -89,6 +91,8 @@ export default function SettingsDialog({
               fullWidth
               helperText={`${genreValue.length}/50`}
               inputProps={{ maxLength: 50 }}
+              InputLabelProps={{ style: { color: "#8B687F" } }}
+              FormHelperTextProps={{ style: { color: "#7B7263" } }}
             />
             <TextField
               label="about"
@@ -104,6 +108,8 @@ export default function SettingsDialog({
               maxRows={3}
               helperText={`${bodyValue.length}/150`}
               inputProps={{ maxLength: 150 }}
+              InputLabelProps={{ style: { color: "#8B687F" } }}
+              FormHelperTextProps={{ style: { color: "#7B7263" } }}
             />
           </form>
           <Button

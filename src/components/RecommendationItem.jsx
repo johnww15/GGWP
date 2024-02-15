@@ -35,9 +35,11 @@ export default function RecommendationItem({
     <>
       <Box
         sx={{
-          border: "2px solid",
+          border: "1px solid",
           borderColor: "primary",
+          boxShadow: "1",
           display: "flex",
+          flexDirection: "row",
           overflow: "hidden",
           justifyContent: "center",
           alignContent: "center",
@@ -47,13 +49,22 @@ export default function RecommendationItem({
           margin: "2px",
         }}
       >
-        <Typography variant="p" component="p" sx={{ margin: "1px" }}>
+        <Typography
+          variant="p"
+          component="p"
+          display="flex"
+          alignItems="center"
+          textAlign="center"
+          sx={{ margin: "1px" }}
+        >
           {username}
         </Typography>
         <IconButton
           variant="outlined"
           color="primary"
           size="small"
+          align="right"
+          sx={{ marginLeft: "auto" }}
           onClick={handleClick}
         >
           <AddCircleSharpIcon />

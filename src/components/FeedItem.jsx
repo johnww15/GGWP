@@ -45,20 +45,41 @@ export default function FeedItem({ user, setFeedList, post, feedList }) {
     <>
       <Box
         sx={{
-          border: "2px solid",
-          borderColor: "primary",
+          border: "1px solid",
+          borderColor: "background",
+          bgcolor: "secondary.main",
+          boxShadow: "0.5",
           display: "flex",
           overflow: "hidden",
-          justifyContent: "flex-start",
-          alignContent: "center",
+          justifyContent: "space-between",
+          alignItems: "center",
           width: "auto",
-          height: "50px",
-          padding: "2px",
-          margin: "2px",
+          height: "100px",
+          padding: "8px",
+          margin: "5px",
+          flexDirection: "column",
         }}
       >
-        <Typography variant="p" component="p" sx={{ margin: "1px" }}>
-          {postDisplayName} / {content} / {formattedDate}
+        <Box
+          sx={{
+            display: "flex",
+            justifyContent: "space-between",
+            width: "100%",
+          }}
+        >
+          <Typography
+            variant="caption"
+            sx={{ fontSize: 13, fontWeight: "bold" }}
+          >
+            @{postDisplayName}
+          </Typography>
+          <Typography variant="body1" sx={{ textAlign: "right", fontSize: 10 }}>
+            {formattedDate}
+          </Typography>
+        </Box>
+
+        <Typography variant="body1" sx={{ textAlign: "left", maxWidth: 300 }}>
+          {content}
         </Typography>
         {post.userId._id === user._id ? (
           <>
@@ -66,11 +87,20 @@ export default function FeedItem({ user, setFeedList, post, feedList }) {
               variant="outlined"
               size="small"
               aria-label="Delete Update Group"
+              sx={{ alignSelf: "flex-end" }}
             >
-              <Button onClick={(evt) => handleClick("Update", evt)}>
+              <Button
+                size="small"
+                sx={{ fontSize: 10 }}
+                onClick={(evt) => handleClick("Update", evt)}
+              >
                 Update
               </Button>
-              <Button onClick={(evt) => handleClick("Delete", evt)}>
+              <Button
+                size="small"
+                sx={{ fontSize: 10 }}
+                onClick={(evt) => handleClick("Delete", evt)}
+              >
                 Delete
               </Button>
             </ButtonGroup>

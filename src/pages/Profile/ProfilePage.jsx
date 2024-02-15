@@ -1,10 +1,13 @@
 import PostForm from "../../components/PostForm";
-import { Box, Button, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  // Typography
+} from "@mui/material";
 import FeedList from "../../components/FeedList";
 import ProfilePicture from "../../components/ProfilePicture";
 import RecommendationList from "../../components/RecommendationList";
 
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import {
   getFeedListByUserId,
@@ -17,7 +20,6 @@ import {
 } from "../../utilities/Users/users-service";
 
 export default function ProfilePage({ user, setUser }) {
-  const navigate = useNavigate();
   const [feedList, setFeedList] = useState({ posts: [] });
   const [friendsList, setFriendsList] = useState([]);
   const [recommendationList, setRecommendationList] = useState([]);
@@ -72,7 +74,8 @@ export default function ProfilePage({ user, setUser }) {
         <Box
           sx={{
             border: "2px solid",
-            borderColor: "primary",
+            borderColor: "secondary.main",
+            bgcolor: "secondary.main",
             display: "flex",
             flexDirection: "column",
             flexWrap: "wrap",
@@ -81,7 +84,6 @@ export default function ProfilePage({ user, setUser }) {
             width: "30vw",
             height: "100vh",
             padding: "2px",
-            margin: "1px",
           }}
         >
           <ProfilePicture
@@ -103,28 +105,19 @@ export default function ProfilePage({ user, setUser }) {
             </>
           ) : (
             <>
-              <Box
-                sx={{
-                  border: "2px solid",
-                  borderColor: "primary",
-                  display: "flex",
-                  flexDirection: "column",
-                  overflow: "hidden",
-                  alignContent: "space-around",
-                  justifyContent: "center",
-                  width: "25vw",
-                  height: "auto",
-                }}
+              <Button
+                variant="contained"
+                color="error"
+                size="small"
+                sx={{ m: 1 }}
               >
-                <Typography variant="p" component="p">
-                  Be Premium to get recommended friends
-                </Typography>
-              </Box>
+                No premium, No Friends
+              </Button>
             </>
           )}
           <Button
-            variant="contained"
-            color="secondary"
+            variant="outlined"
+            color="primary"
             sx={{ m: 1, width: "20%" }}
             onClick={handleLogout}
           >
@@ -133,14 +126,13 @@ export default function ProfilePage({ user, setUser }) {
         </Box>
         <Box
           sx={{
-            border: "2px solid",
             borderColor: "primary",
             display: "flex",
+            bgcolor: "ascents.medium",
             flexDirection: "column",
             width: "70vw",
             height: "100vh",
             padding: "2px",
-            margin: "1px",
           }}
         >
           <PostForm user={user} setFeedList={setFeedList} />

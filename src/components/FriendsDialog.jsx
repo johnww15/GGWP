@@ -22,7 +22,10 @@ export default function FriendsDialog({
           sx={{
             display: "flex",
             flexDirection: "column",
+            overflow: "auto",
             justifyContent: "center",
+            alignItems: "center",
+            height: "500px",
           }}
         >
           {friendsList?.map((friend, idx) => (
