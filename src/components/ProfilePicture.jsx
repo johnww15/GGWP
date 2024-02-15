@@ -4,10 +4,17 @@ import PremiumDialog from "./PremiumDialog";
 import SettingsDialog from "./SettingsDialog";
 import BioItem from "./BioItem";
 import { getBio } from "../utilities/Bios/bios-service";
+import FriendsDialog from "./FriendsDialog";
 
-export default function ProfilePicture({ user, setUser }) {
+export default function ProfilePicture({
+  user,
+  setUser,
+  friendsList,
+  setFriendsList,
+}) {
   const [premiumOpen, setPremiumOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [friendsOpen, setFriendsOpen] = useState(false);
   const [bio, setBio] = useState({
     type: "undisclosed",
     genre: "undisclosed",
@@ -33,13 +40,22 @@ export default function ProfilePicture({ user, setUser }) {
     setSettingsOpen(false);
   };
 
+  const handleFriendsClick = (evt) => {
+    evt.preventDefault();
+    setFriendsOpen(true);
+  };
+
+  const handleFriendsClose = () => {
+    setFriendsOpen(false);
+  };
+
   useEffect(() => {
     (async function () {
       const response = await getBio();
       setBio(response);
       setBioData(response);
     })();
-  }, []);
+  }, [user]);
 
   return (
     <>
@@ -70,6 +86,14 @@ export default function ProfilePicture({ user, setUser }) {
         >
           Settings
         </Button>
+        <Button
+          variant="outlined"
+          color="primary"
+          sx={{ m: 1 }}
+          onClick={(evt) => handleFriendsClick(evt)}
+        >
+          My Friends
+        </Button>
         <BioItem user={user} bio={bio} />
         <PremiumDialog
           user={user}
@@ -84,6 +108,13 @@ export default function ProfilePicture({ user, setUser }) {
           setBio={setBio}
           bioData={bioData}
           setBioData={setBioData}
+        />
+        <FriendsDialog
+          user={user}
+          friendsOpen={friendsOpen}
+          handleFriendsClose={handleFriendsClose}
+          friendsList={friendsList}
+          setFriendsList={setFriendsList}
         />
       </Box>
     </>

@@ -19,12 +19,10 @@ const bioSchema = new Schema(
       type: String,
       required: false,
     },
-    userId: [
-      {
-        type: Schema.Types.ObjectId,
-        ref: "User",
-      },
-    ],
+    userId: {
+      type: Schema.Types.ObjectId,
+      ref: "User",
+    },
   },
   {
     timestamps: true,

@@ -14,3 +14,8 @@ export async function getFriendsList() {
   const response = await FriendAPI.getFriendsList();
   return response;
 }
+
+export async function deleteFriend(body) {
+  const response = await FriendAPI.deleteFriend(body);
+  return response;
+}

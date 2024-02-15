@@ -7,9 +7,10 @@ import Typography from "@mui/material/Typography";
 import ProfilePage from "../Profile/ProfilePage";
 import AuthPage from "../Auth/AuthPage";
 import SignupPage from "../Signup/SignupPage";
+import { getUser } from "../../utilities/Users/users-service";
 
 function App() {
-  const [user, setUser] = useState(false);
+  const [user, setUser] = useState(getUser());
 
   const handleClick = () => {
     setUser(!user);
@@ -21,18 +22,26 @@ function App() {
       <Typography variant="p" component="p" sx={{ mb: 2 }}>
         App is running with id: {user?._id}
       </Typography>
-      {user ? (
-        <>
-          <div className="flex">
-            <Routes>
-              <Route
-                path="/"
-                element={<ProfilePage user={user} setUser={setUser} />}
-              />
-            </Routes>
-          </div>
-        </>
-      ) : (
+      {/* {user ? ( */}
+      <>
+        <div className="flex">
+          <Routes>
+            <Route
+              path="/"
+              element={<ProfilePage user={user} setUser={setUser} />}
+            />
+            <Route
+              path="/login"
+              element={<AuthPage setUser={setUser} user={user} />}
+            />
+            <Route
+              path="/signup"
+              element={<SignupPage setUser={setUser} user={user} />}
+            />
+          </Routes>
+        </div>
+      </>
+      {/* ) : (
         <>
           <div className="flex">
             <Routes>
@@ -45,9 +54,9 @@ function App() {
                 element={<SignupPage setUser={setUser} user={user} />}
               />
             </Routes>
-          </div>
-        </>
-      )}
+          </div> */}
+      {/* </> */}
+      {/* )} */}
       <div>
         <Button
           variant="contained"

@@ -19,3 +19,8 @@ export async function deletePost(postId) {
   const response = await PostAPI.deletePost(postId);
   return response;
 }
+
+export async function getPremiumFeedList(arr) {
+  const response = await PostAPI.getPremiumFeedList(arr);
+  return response;
+}

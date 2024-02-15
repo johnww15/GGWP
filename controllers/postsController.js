@@ -18,6 +18,7 @@ const postCreate = async (req, res) => {
 //function to get all entry data
 const postIndexUserOnly = async (req, res) => {
   const userId = req.user._id;
+  console.log("userid postindexuser", userId);
   try {
     const posts = await Post.find({ userId: userId }).populate(
       "userId",
@@ -80,9 +81,31 @@ const postDeleteOne = async (req, res) => {
   }
 };
 
+//function to retrieve all posts for premium users and their friends
+const postIndexPremium = async (req, res) => {
+  try {
+    const user = req.user;
+    const { list } = req.body;
+    list.push(user);
+
+    const query = {
+      $or: list.map((account) => ({ userId: account._id })),
+    };
+    const premiumFeedList = await Post.find(query);
+    res.json(premiumFeedList);
+  } catch (error) {
+    console.error(
+      "error in postIndexPremium function in postController file",
+      error
+    );
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   postCreate,
   postIndexUserOnly,
   postUpdate,
   postDeleteOne,
+  postIndexPremium,
 };

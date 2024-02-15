@@ -1,9 +1,8 @@
-import { Box } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import RecommendationItem from "./RecommendationItem";
 
 export default function RecommendationList({
   user,
-  friendsList,
   recommendationList,
   setRecommendationList,
 }) {
@@ -22,12 +21,16 @@ export default function RecommendationList({
           height: "auto",
         }}
       >
+        <Typography variant="p" component="p" sx={{ align: "center" }}>
+          Reommended Friends
+        </Typography>
         {recommendationList?.map((recommendation, idx) => (
           <div key={idx}>
             <RecommendationItem
               user={user}
               setRecommendationList={setRecommendationList}
               recommendation={recommendation}
+              recommendationList={recommendationList}
             />
           </div>
         ))}

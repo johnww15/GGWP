@@ -3,18 +3,23 @@ import AddCircleSharpIcon from "@mui/icons-material/AddCircleSharp";
 import { addFriend } from "../utilities/Friends/friends-service";
 
 export default function RecommendationItem({
-  user,
   setRecommendationList,
+  recommendationList,
   recommendation,
 }) {
   const username = recommendation.display_name;
-  console.log(recommendation);
 
   const handleClick = async (evt) => {
     evt.preventDefault();
-    console.log("recommendation afterclick", recommendation);
     const response = await addFriend(recommendation);
     console.log("response.friends is array", response.friends);
+    console.log("recommendation", recommendation);
+
+    let oldList = recommendationList;
+    let newList = oldList.filter((item) => {
+      return item._id !== recommendation._id;
+    });
+    setRecommendationList(newList);
   };
   return (
     <>

@@ -50,7 +50,23 @@ export async function getFriendsList() {
     method: "GET",
     headers,
   };
+  console.log("friendsapi headesr", headers);
   const res = await fetch(BASE_URL, options);
+  const json = await res.json();
+  if (res.ok) {
+    return json;
+  } else {
+    throw new Error("Network response failed.");
+  }
+}
+
+export async function deleteFriend(body) {
+  const data = body._id;
+  const options = {
+    method: "DELETE",
+    headers,
+  };
+  const res = await fetch(BASE_URL + "/" + data, options);
   const json = await res.json();
   if (res.ok) {
     return json;

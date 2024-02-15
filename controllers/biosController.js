@@ -3,8 +3,9 @@ const Bio = require("../models/Bio");
 //function to get entry data
 const bioIndex = async (req, res) => {
   const userId = req.user._id;
+  console.log("userid", req.user._id);
   try {
-    const bio = await Bio.findOne({ userId: userId });
+    const bio = await Bio.findOne({ userId });
     console.log("bio", bio);
     res.json(bio);
   } catch (error) {

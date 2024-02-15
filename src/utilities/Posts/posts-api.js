@@ -71,3 +71,23 @@ export async function deletePost(postId) {
     // throw new Error("Create Event Error");
   }
 }
+
+export async function getPremiumFeedList(arr) {
+  let data = {
+    list: arr,
+  };
+
+  const options = {
+    method: "POST",
+    headers,
+    body: JSON.stringify(data),
+  };
+  const res = await fetch(BASE_URL + "/premium", options);
+  const json = await res.json();
+  if (res.ok) {
+    return json;
+  } else {
+    return res;
+    // throw new Error("Create Event Error");
+  }
+}

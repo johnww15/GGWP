@@ -63,8 +63,36 @@ const friendAdd = async (req, res) => {
   }
 };
 
+//function to delete friend
+const friendDelete = async (req, res) => {
+  const userId = req.user._id;
+  const { friendId } = req.params;
+
+  try {
+    const deletingFriend = await Friend.findOne({ userId: userId }).populate(
+      "friends",
+      "display_name isPremium profilepic"
+    );
+
+    deletingFriend.friends = deletingFriend.friends.filter((friend) => {
+      return friend._id.toString() !== friendId;
+    });
+
+    const newList = deletingFriend.friends;
+    await deletingFriend.save();
+    res.json(newList);
+  } catch (error) {
+    console.error(
+      "error in friendDelete function in friendController file",
+      error
+    );
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+};
+
 module.exports = {
   friendCreate,
   friendIndex,
   friendAdd,
+  friendDelete,
 };
