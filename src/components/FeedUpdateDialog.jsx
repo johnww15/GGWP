@@ -56,6 +56,8 @@ export default function FeedUpdateDialog({
             type="content"
             sx={{ mb: 3 }}
             fullWidth
+            InputLabelProps={{ style: { color: "#8B687F" } }}
+            FormHelperTextProps={{ style: { color: "#7B7263" } }}
           />
         </form>
         <Button variant="contained" color="primary" onClick={handleSubmit}>
