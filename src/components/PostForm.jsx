@@ -56,7 +56,7 @@ export default function PostForm({ user, setFeedList }) {
               mb: 1,
               mt: 5,
               "& .MuiOutlinedInput-root .MuiOutlinedInput-notchedOutline": {
-                borderColor: "#BBE1FA",
+                borderColor: "#0F4C75",
               },
             }}
             multiline
@@ -76,7 +76,7 @@ export default function PostForm({ user, setFeedList }) {
           </Button> */}
           <Button
             variant="contained"
-            color="secondary"
+            color="primary"
             type="submit"
             sx={{ mb: 5 }}
             onClick={(evt) => handleSubmit("post", evt)}
