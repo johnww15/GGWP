@@ -15,6 +15,7 @@ const theme = createTheme({
     },
     background: {
       main: "#FFFFFF",
+      light: "#eeeee4",
     },
     ascents: {
       light: "#FFCAB1",

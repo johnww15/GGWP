@@ -51,7 +51,7 @@ export default function PostForm({ user, setFeedList }) {
             type="content"
             InputLabelProps={{ style: { color: "#8B687F" } }}
             FormHelperTextProps={{ style: { color: "#7B7263" } }}
-            InputProps={{ style: { color: "#BBE1FA" } }}
+            InputProps={{ style: { color: "#0F4C75" } }}
             sx={{
               mb: 1,
               mt: 5,

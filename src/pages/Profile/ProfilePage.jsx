@@ -128,7 +128,7 @@ export default function ProfilePage({ user, setUser }) {
           sx={{
             borderColor: "primary",
             display: "flex",
-            bgcolor: "ascents.medium",
+            bgcolor: "background.light",
             flexDirection: "column",
             width: "70vw",
             height: "100vh",
