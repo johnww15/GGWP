@@ -7,8 +7,11 @@ const friendCreate = async (req, res) => {
     const checkUserExist = await Friend.find({ userId: data.userId });
     if (checkUserExist.length === 0) {
       const createdFriend = await Friend.create(data);
+      console.log("createdFriendlist", createdFriend);
       res.json(createdFriend);
+      return;
     }
+    res.json(checkUserExist);
   } catch (error) {
     console.error(
       "error in friendCreate function in friendController file",

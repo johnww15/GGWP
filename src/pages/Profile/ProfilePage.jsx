@@ -13,7 +13,6 @@ import {
 import { getFriendsList } from "../../utilities/Friends/friends-service";
 import {
   getRecommendationList,
-  getUser,
   userLogout,
 } from "../../utilities/Users/users-service";
 
@@ -41,7 +40,7 @@ export default function ProfilePage({ user, setUser }) {
         console.log("premiumFeedListResponse", premiumFeedListResponse);
         console.log("RecommendationList response", recommendationListResponse);
         console.log("friendListResponse", friendsListResponse);
-      } else {
+      } else if (user.isPremium === false) {
         const feedListResponse = await getFeedListByUserId();
         console.log("FeedList response", feedListResponse);
         setFeedList(feedListResponse);
@@ -51,8 +50,7 @@ export default function ProfilePage({ user, setUser }) {
 
   const handleLogout = (evt) => {
     evt.preventDefault();
-    // userLogout();
-    localStorage.removeItem("token");
+    userLogout();
     setFeedList({ posts: [] });
     setFriendsList([]);
     setRecommendationList([]);

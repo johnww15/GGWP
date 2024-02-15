@@ -17,15 +17,18 @@ export default function PremiumDialog({
     evt.preventDefault();
     if (submitType === user.isPremium) {
       handlePremiumClose();
+      return;
     }
     const response = await premiumSwitch(submitType);
-
-    if (response.isPremium === true) {
+    console.log("ispremium", response);
+    if (response.isPremium) {
+      console.log("ispremium is true and running if statement");
       const friendsResponse = await createFriendList(response);
       console.log("friendsResponse", friendsResponse);
     }
     setUser(response);
-    handlePremiumClose();
+    handleClose();
+    return;
   };
 
   return (

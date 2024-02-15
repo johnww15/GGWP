@@ -91,7 +91,10 @@ const postIndexPremium = async (req, res) => {
     const query = {
       $or: list.map((account) => ({ userId: account._id })),
     };
-    const premiumFeedList = await Post.find(query);
+    const premiumFeedList = await Post.find(query).populate(
+      "userId",
+      "display_name"
+    );
     res.json(premiumFeedList);
   } catch (error) {
     console.error(
