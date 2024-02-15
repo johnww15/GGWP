@@ -89,6 +89,8 @@ export default function ProfilePage({ user, setUser }) {
             setUser={setUser}
             friendsList={friendsList}
             setFriendsList={setFriendsList}
+            setRecommendationList={setRecommendationList}
+            setFeedList={setFeedList}
           />
           {user?.isPremium ? (
             <>

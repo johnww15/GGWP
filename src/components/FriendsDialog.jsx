@@ -8,6 +8,8 @@ export default function FriendsDialog({
   handleFriendsClose,
   friendsList,
   setFriendsList,
+  setRecommendationList,
+  setFeedList,
 }) {
   const handleClose = () => {
     handleFriendsClose();
@@ -25,7 +27,12 @@ export default function FriendsDialog({
         >
           {friendsList?.map((friend, idx) => (
             <div key={idx}>
-              <FriendItem friend={friend} setFriendsList={setFriendsList} />
+              <FriendItem
+                friend={friend}
+                setFriendsList={setFriendsList}
+                setRecommendationList={setRecommendationList}
+                setFeedList={setFeedList}
+              />
             </div>
           ))}
         </Box>

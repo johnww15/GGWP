@@ -11,6 +11,8 @@ export default function ProfilePicture({
   setUser,
   friendsList,
   setFriendsList,
+  setRecommendationList,
+  setFeedList,
 }) {
   const [premiumOpen, setPremiumOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -115,6 +117,8 @@ export default function ProfilePicture({
           handleFriendsClose={handleFriendsClose}
           friendsList={friendsList}
           setFriendsList={setFriendsList}
+          setRecommendationList={setRecommendationList}
+          setFeedList={setFeedList}
         />
       </Box>
     </>
