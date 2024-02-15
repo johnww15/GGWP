@@ -20,6 +20,10 @@ export default function PostForm({ user, setFeedList }) {
         ...prevList,
         posts: [response, ...prevList.posts],
       }));
+      setPostData({
+        ...postData,
+        content: "",
+      });
     }
   };
 
