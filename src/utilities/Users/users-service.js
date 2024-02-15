@@ -38,7 +38,6 @@ export async function userLogout() {
 }
 
 export async function userSignup(signupData) {
-  console.log("user-service running");
   console.log("signupData", signupData);
   const token = await usersAPI.userSignup(signupData);
   console.log("user-service ran");

@@ -26,7 +26,7 @@ const friendIndex = async (req, res) => {
       "friends",
       "display_name isPremium profilepic"
     );
-
+    console.log("friends.friends", friends.friends);
     res.json(friends.friends);
   } catch (error) {
     console.error(

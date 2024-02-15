@@ -1,12 +1,19 @@
 import { getToken } from "./users-service";
 
-//constnat for file
+//constant for file
 const BASE_URL = "/api/users";
-const TOKEN = getToken();
-const headers = {
-  "Content-type": "application/json",
-  Authorization: `Bearer ${TOKEN}`,
-};
+// const TOKEN = getToken();
+// const headers = {
+//   "Content-type": "application/json",
+//   Authorization: `Bearer ${TOKEN}`,
+// };
+function createHeaders() {
+  const TOKEN = getToken();
+  return {
+    "Content-type": "application/json",
+    Authorization: `Bearer ${TOKEN}`,
+  };
+}
 
 // signup function
 export async function userSignup(signupData) {
@@ -16,11 +23,14 @@ export async function userSignup(signupData) {
 
 // login function
 export async function userLogin(loginData) {
+  console.log("user-api login running");
   return sendRequest(BASE_URL + "/login", "POST", loginData);
 }
 
 export async function sendRequest(url, method = "GET", payload = null) {
   const options = { method };
+  console.log("options", options);
+  console.log("payload", payload);
   if (payload) {
     options.headers = { "Content-Type": "application/json" };
     options.body = JSON.stringify(payload);
@@ -49,7 +59,7 @@ export async function getRecommendationList(array) {
   };
   const options = {
     method: "POST",
-    headers,
+    headers: createHeaders(),
     body: JSON.stringify(data),
   };
   const res = await fetch(BASE_URL + "/recommendations", options);
@@ -68,7 +78,7 @@ export async function premiumSwitch(data) {
   };
   const options = {
     method: "PUT",
-    headers,
+    headers: createHeaders(),
     body: JSON.stringify(newData),
   };
   const res = await fetch(BASE_URL, options);

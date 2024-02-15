@@ -14,6 +14,7 @@ function createJWT(user) {
 async function userLogin(req, res) {
   try {
     const user = await User.findOne({ email: req.body.email });
+    console.log("user", user);
     if (!user) throw new Error();
     const match = await bcrypt.compare(req.body.password, user.password);
     if (!match) throw new Error();

@@ -94,7 +94,7 @@ export default function ProfilePicture({
         >
           My Friends
         </Button>
-        <BioItem user={user} bio={bio} />
+        <BioItem bio={bio} />
         <PremiumDialog
           user={user}
           premiumOpen={premiumOpen}

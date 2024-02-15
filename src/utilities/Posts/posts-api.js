@@ -2,16 +2,23 @@ import { getToken } from "../Users/users-service";
 
 //Constants for file
 const BASE_URL = "/api/posts";
-const TOKEN = getToken();
-const headers = {
-  "Content-type": "application/json",
-  Authorization: `Bearer ${TOKEN}`,
-};
+// const TOKEN = getToken();
+// const headers = {
+//   "Content-type": "application/json",
+//   Authorization: `Bearer ${TOKEN}`,
+// };
+function createHeaders() {
+  const TOKEN = getToken();
+  return {
+    "Content-type": "application/json",
+    Authorization: `Bearer ${TOKEN}`,
+  };
+}
 
 export async function createPost(body) {
   const options = {
     method: "POST",
-    headers,
+    headers: createHeaders(),
     body: JSON.stringify(body),
   };
   const res = await fetch(BASE_URL, options);
@@ -26,7 +33,7 @@ export async function createPost(body) {
 export async function getFeedListByUserId() {
   const options = {
     method: "GET",
-    headers,
+    headers: createHeaders(),
   };
 
   const res = await fetch(BASE_URL, options);
@@ -42,7 +49,7 @@ export async function updateFeedItem(body) {
   const postId = body._id;
   const options = {
     method: "PUT",
-    headers,
+    headers: createHeaders(),
     body: JSON.stringify(body),
   };
 
@@ -59,7 +66,7 @@ export async function updateFeedItem(body) {
 export async function deletePost(postId) {
   const options = {
     method: "DELETE",
-    headers,
+    headers: createHeaders(),
   };
 
   const res = await fetch(BASE_URL + "/" + postId, options);
@@ -79,7 +86,7 @@ export async function getPremiumFeedList(arr) {
 
   const options = {
     method: "POST",
-    headers,
+    headers: createHeaders(),
     body: JSON.stringify(data),
   };
   const res = await fetch(BASE_URL + "/premium", options);

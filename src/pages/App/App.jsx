@@ -20,33 +20,25 @@ function App() {
   return (
     <>
       <Typography variant="p" component="p" sx={{ mb: 2 }}>
-        App is running with id: {user?._id}
+        App is running with id: {user?.email} / {user?._id}
       </Typography>
-      {/* {user ? ( */}
-      <>
-        <div className="flex">
-          <Routes>
-            <Route
-              path="/"
-              element={<ProfilePage user={user} setUser={setUser} />}
-            />
-            <Route
-              path="/login"
-              element={<AuthPage setUser={setUser} user={user} />}
-            />
-            <Route
-              path="/signup"
-              element={<SignupPage setUser={setUser} user={user} />}
-            />
-          </Routes>
-        </div>
-      </>
-      {/* ) : (
+      {user ? (
         <>
           <div className="flex">
             <Routes>
               <Route
-                path="/login"
+                path="/"
+                element={<ProfilePage user={user} setUser={setUser} />}
+              />
+            </Routes>
+          </div>
+        </>
+      ) : (
+        <>
+          <div className="flex">
+            <Routes>
+              <Route
+                path="/"
                 element={<AuthPage setUser={setUser} user={user} />}
               />
               <Route
@@ -54,9 +46,9 @@ function App() {
                 element={<SignupPage setUser={setUser} user={user} />}
               />
             </Routes>
-          </div> */}
-      {/* </> */}
-      {/* )} */}
+          </div>
+        </>
+      )}
       <div>
         <Button
           variant="contained"

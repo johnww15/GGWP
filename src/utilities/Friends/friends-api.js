@@ -2,11 +2,18 @@ import { getToken } from "../Users/users-service";
 
 //Constants for file
 const BASE_URL = "/api/friends";
-const TOKEN = getToken();
-const headers = {
-  "Content-type": "application/json",
-  Authorization: `Bearer ${TOKEN}`,
-};
+// const TOKEN = getToken();
+// const headers = {
+//   "Content-type": "application/json",
+//   Authorization: `Bearer ${TOKEN}`,
+// };
+function createHeaders() {
+  const TOKEN = getToken();
+  return {
+    "Content-type": "application/json",
+    Authorization: `Bearer ${TOKEN}`,
+  };
+}
 
 export async function createFriendList(data) {
   const newData = {
@@ -15,7 +22,7 @@ export async function createFriendList(data) {
   };
   const options = {
     method: "POST",
-    headers,
+    headers: createHeaders(),
     body: JSON.stringify(newData),
   };
   const res = await fetch(BASE_URL, options);
@@ -33,7 +40,7 @@ export async function addFriend(data) {
   };
   const options = {
     method: "PUT",
-    headers,
+    headers: createHeaders(),
     body: JSON.stringify(newData),
   };
   const res = await fetch(BASE_URL, options);
@@ -48,9 +55,8 @@ export async function addFriend(data) {
 export async function getFriendsList() {
   const options = {
     method: "GET",
-    headers,
+    headers: createHeaders(),
   };
-  console.log("friendsapi headesr", headers);
   const res = await fetch(BASE_URL, options);
   const json = await res.json();
   if (res.ok) {
@@ -64,7 +70,7 @@ export async function deleteFriend(body) {
   const data = body._id;
   const options = {
     method: "DELETE",
-    headers,
+    headers: createHeaders(),
   };
   const res = await fetch(BASE_URL + "/" + data, options);
   const json = await res.json();
