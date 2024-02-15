@@ -20,10 +20,9 @@ const postIndexUserOnly = async (req, res) => {
   const userId = req.user._id;
   console.log("userid postindexuser", userId);
   try {
-    const posts = await Post.find({ userId: userId }).populate(
-      "userId",
-      "display_name"
-    );
+    const posts = await Post.find({ userId: userId })
+      .populate("userId", "display_name")
+      .sort({ createdAt: -1 });
     res.json({ posts });
   } catch (error) {
     console.error("error in postIndex function in postController file", error);
@@ -91,10 +90,9 @@ const postIndexPremium = async (req, res) => {
     const query = {
       $or: list.map((account) => ({ userId: account._id })),
     };
-    const premiumFeedList = await Post.find(query).populate(
-      "userId",
-      "display_name"
-    );
+    const premiumFeedList = await Post.find(query)
+      .populate("userId", "display_name")
+      .sort({ createdAt: -1 });
     res.json(premiumFeedList);
   } catch (error) {
     console.error(

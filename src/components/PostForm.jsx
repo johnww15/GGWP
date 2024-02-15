@@ -18,7 +18,7 @@ export default function PostForm({ user, setFeedList }) {
       console.log("response", response);
       setFeedList((prevList) => ({
         ...prevList,
-        posts: [...prevList.posts, response],
+        posts: [response, ...prevList.posts],
       }));
     }
   };

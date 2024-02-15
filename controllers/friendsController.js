@@ -7,7 +7,6 @@ const friendCreate = async (req, res) => {
     const checkUserExist = await Friend.find({ userId: data.userId });
     if (checkUserExist.length === 0) {
       const createdFriend = await Friend.create(data);
-      console.log("createdFriendlist", createdFriend);
       res.json(createdFriend);
       return;
     }
@@ -29,7 +28,6 @@ const friendIndex = async (req, res) => {
       "friends",
       "display_name isPremium profilepic"
     );
-    console.log("friends.friends", friends.friends);
     res.json(friends.friends);
   } catch (error) {
     console.error(

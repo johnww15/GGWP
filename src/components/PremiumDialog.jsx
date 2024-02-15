@@ -20,9 +20,7 @@ export default function PremiumDialog({
       return;
     }
     const response = await premiumSwitch(submitType);
-    console.log("ispremium", response);
     if (response.isPremium) {
-      console.log("ispremium is true and running if statement");
       const friendsResponse = await createFriendList(response);
       console.log("friendsResponse", friendsResponse);
     }
