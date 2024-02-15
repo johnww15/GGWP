@@ -45,7 +45,15 @@ export default function LoginForm({ setUser }) {
   };
 
   return (
-    <Container sx={{ width: 350 }}>
+    <Container
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
       <form autoComplete="off" onSubmit={handleSubmit}>
         <h2>Login Form</h2>
         <TextField

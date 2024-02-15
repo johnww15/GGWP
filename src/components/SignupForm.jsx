@@ -68,7 +68,15 @@ export default function SignupForm({ setUser }) {
   };
 
   return (
-    <Container sx={{ width: 350 }}>
+    <Container
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "center",
+        justifyContent: "center",
+        height: "100vh",
+      }}
+    >
       <form autoComplete="off" onSubmit={handleSubmit}>
         <h2>Sign Up</h2>
         <TextField
