@@ -19,9 +19,9 @@ function App() {
   // console.log(user);
   return (
     <>
-      <Typography variant="p" component="p" sx={{ mb: 2 }}>
+      {/* <Typography variant="p" component="p" sx={{ mb: 2 }}>
         App is running with id: {user?.email} / {user?._id}
-      </Typography>
+      </Typography> */}
       {user ? (
         <>
           <div className="flex">
@@ -49,7 +49,7 @@ function App() {
           </div>
         </>
       )}
-      <div>
+      {/* <div>
         <Button
           variant="contained"
           color="secondary"
@@ -58,7 +58,7 @@ function App() {
         >
           Tmp button to toggle setUser state
         </Button>
-      </div>
+      </div> */}
     </>
   );
 }

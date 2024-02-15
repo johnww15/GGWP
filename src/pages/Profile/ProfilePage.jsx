@@ -1,5 +1,5 @@
 import PostForm from "../../components/PostForm";
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import FeedList from "../../components/FeedList";
 import ProfilePicture from "../../components/ProfilePicture";
 import RecommendationList from "../../components/RecommendationList";
@@ -42,7 +42,6 @@ export default function ProfilePage({ user, setUser }) {
         console.log("friendListResponse", friendsListResponse);
       } else if (user.isPremium === false) {
         const feedListResponse = await getFeedListByUserId();
-        console.log("FeedList response", feedListResponse);
         setFeedList(feedListResponse);
       }
     })();
@@ -91,11 +90,36 @@ export default function ProfilePage({ user, setUser }) {
             friendsList={friendsList}
             setFriendsList={setFriendsList}
           />
-          <RecommendationList
-            user={user}
-            recommendationList={recommendationList}
-            setRecommendationList={setRecommendationList}
-          />
+          {user?.isPremium ? (
+            <>
+              <RecommendationList
+                user={user}
+                recommendationList={recommendationList}
+                setRecommendationList={setRecommendationList}
+                setFeedList={setFeedList}
+              />
+            </>
+          ) : (
+            <>
+              <Box
+                sx={{
+                  border: "2px solid",
+                  borderColor: "primary",
+                  display: "flex",
+                  flexDirection: "column",
+                  overflow: "hidden",
+                  alignContent: "space-around",
+                  justifyContent: "center",
+                  width: "25vw",
+                  height: "auto",
+                }}
+              >
+                <Typography variant="p" component="p">
+                  Be Premium to get recommended friends
+                </Typography>
+              </Box>
+            </>
+          )}
           <Button
             variant="contained"
             color="secondary"

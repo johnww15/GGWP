@@ -1,24 +1,34 @@
 import { Box, IconButton, Typography } from "@mui/material";
 import AddCircleSharpIcon from "@mui/icons-material/AddCircleSharp";
-import { addFriend } from "../utilities/Friends/friends-service";
+import {
+  addFriend,
+  getFriendsList,
+} from "../utilities/Friends/friends-service";
+import { getPremiumFeedList } from "../utilities/Posts/posts-service";
 
 export default function RecommendationItem({
   setRecommendationList,
   recommendationList,
   recommendation,
+  setFeedList,
 }) {
   const username = recommendation.display_name;
 
   const handleClick = async (evt) => {
     evt.preventDefault();
     const response = await addFriend(recommendation);
+    const friendsListResponse = await getFriendsList();
+    const premiumFeedListResponse = await getPremiumFeedList(
+      friendsListResponse
+    );
     console.log("response.friends is array", response.friends);
-    console.log("recommendation", recommendation);
 
     let oldList = recommendationList;
     let newList = oldList.filter((item) => {
       return item._id !== recommendation._id;
     });
+    let alteredFeed = { posts: premiumFeedListResponse };
+    setFeedList(alteredFeed);
     setRecommendationList(newList);
   };
   return (

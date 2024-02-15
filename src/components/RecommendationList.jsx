@@ -5,6 +5,7 @@ export default function RecommendationList({
   user,
   recommendationList,
   setRecommendationList,
+  setFeedList,
 }) {
   return (
     <>
@@ -27,10 +28,10 @@ export default function RecommendationList({
         {recommendationList?.map((recommendation, idx) => (
           <div key={idx}>
             <RecommendationItem
-              user={user}
               setRecommendationList={setRecommendationList}
               recommendation={recommendation}
               recommendationList={recommendationList}
+              setFeedList={setFeedList}
             />
           </div>
         ))}
