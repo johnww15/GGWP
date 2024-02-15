@@ -1,4 +1,4 @@
-import { Box, Button } from "@mui/material";
+import { Box, Button, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import PremiumDialog from "./PremiumDialog";
 import SettingsDialog from "./SettingsDialog";
@@ -88,14 +88,24 @@ export default function ProfilePicture({
         >
           Settings
         </Button>
-        <Button
-          variant="outlined"
-          color="primary"
-          sx={{ m: 1 }}
-          onClick={(evt) => handleFriendsClick(evt)}
-        >
-          My Friends
-        </Button>
+        {user?.isPremium ? (
+          <>
+            <Button
+              variant="outlined"
+              color="primary"
+              sx={{ m: 1 }}
+              onClick={(evt) => handleFriendsClick(evt)}
+            >
+              My Friends
+            </Button>
+          </>
+        ) : (
+          <>
+            <Button variant="outlined" color="primary" dx={{ m: 1 }}>
+              No premium, No Friends
+            </Button>
+          </>
+        )}
         <BioItem bio={bio} />
         <PremiumDialog
           user={user}

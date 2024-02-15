@@ -41,7 +41,9 @@ export default function FeedItem({ user, setFeedList, post, feedList }) {
   const handleDeleteClose = () => {
     setDeleteOpen(false);
   };
-
+  console.log("post item", post);
+  console.log("ids", post._id, user._id);
+  console.log("true check", post._id === user._id);
   return (
     <>
       <Box
@@ -61,14 +63,24 @@ export default function FeedItem({ user, setFeedList, post, feedList }) {
         <Typography variant="p" component="p" sx={{ margin: "1px" }}>
           {postDisplayName} / {content} / {formattedDate}
         </Typography>
-        <ButtonGroup
-          variant="outlined"
-          size="small"
-          aria-label="Delete Update Group"
-        >
-          <Button onClick={(evt) => handleClick("Update", evt)}>Update</Button>
-          <Button onClick={(evt) => handleClick("Delete", evt)}>Delete</Button>
-        </ButtonGroup>
+        {post.userId._id === user._id ? (
+          <>
+            <ButtonGroup
+              variant="outlined"
+              size="small"
+              aria-label="Delete Update Group"
+            >
+              <Button onClick={(evt) => handleClick("Update", evt)}>
+                Update
+              </Button>
+              <Button onClick={(evt) => handleClick("Delete", evt)}>
+                Delete
+              </Button>
+            </ButtonGroup>
+          </>
+        ) : (
+          <></>
+        )}
         <FeedUpdateDialog
           user={user}
           updateOpen={updateOpen}
