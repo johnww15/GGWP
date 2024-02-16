@@ -5,6 +5,7 @@ export default function RecommendationList({
   recommendationList,
   setRecommendationList,
   setFeedList,
+  setFriendsList,
 }) {
   return (
     <>
@@ -34,6 +35,7 @@ export default function RecommendationList({
               recommendation={recommendation}
               recommendationList={recommendationList}
               setFeedList={setFeedList}
+              setFriendsList={setFriendsList}
             />
           </div>
         ))}

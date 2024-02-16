@@ -74,7 +74,7 @@ export default function ProfilePage({ user, setUser }) {
         <Box
           sx={{
             border: "2px solid",
-            borderColor: "secondary.main",
+            borderColor: "secondary",
             bgcolor: "secondary.main",
             display: "flex",
             flexDirection: "column",
@@ -101,6 +101,7 @@ export default function ProfilePage({ user, setUser }) {
                 recommendationList={recommendationList}
                 setRecommendationList={setRecommendationList}
                 setFeedList={setFeedList}
+                setFriendsList={setFriendsList}
               />
             </>
           ) : (

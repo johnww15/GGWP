@@ -45,7 +45,6 @@ const friendAdd = async (req, res) => {
   console.log(data);
   try {
     const friendList = await Friend.findOne({ userId: userId });
-
     if (!friendList) {
       return res.status(404).json({ error: "User does not exist" });
     }
@@ -53,7 +52,11 @@ const friendAdd = async (req, res) => {
       // If the friend doesn't exist, add it to the friend list
       friendList.friends.push(data.friends);
       await friendList.save();
-      res.json(friendList);
+      const finalFriendList = await Friend.findOne({ userId: userId }).populate(
+        "friends",
+        "display_name isPremium profilepic"
+      );
+      res.json(finalFriendList);
     }
   } catch (error) {
     console.error(

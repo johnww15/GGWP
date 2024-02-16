@@ -11,6 +11,7 @@ export default function RecommendationItem({
   recommendationList,
   recommendation,
   setFeedList,
+  setFriendsList,
 }) {
   const username = recommendation.display_name;
 
@@ -30,6 +31,7 @@ export default function RecommendationItem({
     let alteredFeed = { posts: premiumFeedListResponse };
     setFeedList(alteredFeed);
     setRecommendationList(newList);
+    setFriendsList(response.friends);
   };
   return (
     <>
