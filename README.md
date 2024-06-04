@@ -20,6 +20,8 @@
 - Friends' messages will render alongside user's own messages when premium functionality is toggled on
 - Logout function
 
+<br>
+
 ## Technologies and Tools used
 
 - MongoDB
@@ -43,9 +45,22 @@ This emulates most other social media platforms with the ability for users to po
 - Using modals to declutter UI
 - Render UI in real time when edits to the profile and feed are made
 
+<br>
+
+## Analysis of Code
+
+**Main User Effect Function to Pull Data when user logs in**
+![Use Effect Function.js File](https://github.com/johnww15/ggwp/blob/main/public/07%20_MainFunction.png?raw=true)
+
+- Included in the src/pages/Profile/ProfilePage.jsx file
+- This main function pulls the relevant data according to the login user's "premium" status
+- As the main feature for "premium" users is the ability to include friends and the corresponding features that come along with it, the different states and data pulls had to be consolidated in this function to avoid crashing in later parts of the application
+
+<br>
+
 ## Screenshots of Application
 
-**Login Screen**
+**Login Account Screen**
 ![Login Screen](https://github.com/johnww15/ggwp/blob/main/public/01_Login.png?raw=true)
 
 **Register Account Screen**
@@ -80,3 +95,15 @@ This emulates most other social media platforms with the ability for users to po
 
 - "Premium" users can click the "My Friends" button for this modal to appear and show them their current friends list.
 - User can delete the friends by clicking the trash icon next to the selected user
+
+<br>
+
+## Summary
+
+This was my first attempt at doing a fullstack MERN project on my own. The structuring of both backend and front end development, time management as well as figuring out an efficient way to develop the project were all key contributors to my learning.
+
+One large learning opportunity for me was was the decoupling of code when it came to identifying different data required for the different types of users. In the initial development, features for both premium and non-premium users were done seperately without enough consideration for the potential consequences when the application came together. In doing so, nearing the end of development, when both "non-premium" and premium" users co-existed in the application, it was unable to run smoothly as certain "premium" and "non-premium" states & functions were crashing each other.
+
+By retracing the errors, debugging, reshuffling and consolidating key functions into the Main UseEffect function (Screenshot above), I was was able to prevent the crashes and allowed the application to run smoothly.
+
+Through this project, it helped me better understand the difficulties of not only frontend and backend development but also the possible hurdles that will be faced when combining both. A clean and efficient frontend code led to a smoother backend development and vice versa.
