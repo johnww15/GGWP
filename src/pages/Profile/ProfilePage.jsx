@@ -39,9 +39,9 @@ export default function ProfilePage({ user, setUser }) {
         setFriendsList(friendsListResponse);
         let alteredFeed = { posts: premiumFeedListResponse };
         setFeedList(alteredFeed);
-        console.log("premiumFeedListResponse", premiumFeedListResponse);
-        console.log("RecommendationList response", recommendationListResponse);
-        console.log("friendListResponse", friendsListResponse);
+        // console.log("premiumFeedListResponse", premiumFeedListResponse);
+        // console.log("RecommendationList response", recommendationListResponse);
+        // console.log("friendListResponse", friendsListResponse);
       } else if (user.isPremium === false) {
         const feedListResponse = await getFeedListByUserId();
         setFeedList(feedListResponse);
