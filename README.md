@@ -6,6 +6,7 @@
 
 - Built with MongoDB, Express.js, React.js and Node.js
 - Initially deployed using cyclic (cyclic has ended its services)
+- Currently deployed using Render. (https://ggwp-oxg6.onrender.com/)
 
 **TimeFrame**
 
